@@ -1,0 +1,13 @@
+{
+    "kind": "template",
+    "name": "dashui:name",
+    "target": "intersightdevnet:ucs_domain",
+    "view": "default",
+    "element": {
+        "instanceOf": "string",
+        "path": [
+            "attributes(intersightdevnet.host.name)",
+            "id"
+        ]
+    }
+}

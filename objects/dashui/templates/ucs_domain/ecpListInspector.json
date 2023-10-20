@@ -1,0 +1,33 @@
+{
+    "kind": "template",
+    "name": "dashui:ecpListInspector",
+    "target": "intersightdevnet:ucs_domain",
+    "view": "default",
+    "element": {
+        "instanceOf": "elements",
+        "elements": [
+            {
+                "instanceOf": "focusedEntities",
+                "element": {
+                    "instanceOf": {
+                        "name": "nameWidget"
+                    },
+                    "path": [
+                        "attributes(intersightdevnet.host.name)",
+                        "id"
+                    ]
+                },
+                "mode": "SINGLE"
+            },
+            {
+                "instanceOf": "focusedEntities",
+                "element": {
+                    "instanceOf": {
+                        "name": "intersightdevnet:ucs_domainInspectorWidget"
+                    }
+                },
+                "mode": "SINGLE"
+            }
+        ]
+    }
+}

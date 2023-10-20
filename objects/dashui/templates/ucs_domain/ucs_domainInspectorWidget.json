@@ -1,0 +1,42 @@
+{
+    "kind": "template",
+    "name": "intersightdevnet:ucs_domainInspectorWidget",
+    "target": "intersightdevnet:ucs_domain",
+    "view": "default",
+    "element": {
+        "instanceOf": "elements",
+        "elements": {
+            "instanceOf": {
+                "name": "inspectorWidget"
+            },
+            "elements": {
+                "instanceOf": {
+                    "name": "properties"
+                },
+                "elements": [
+                    {
+                        "label": {
+                            "instanceOf": "text",
+                            "content": "intersightdevnet.host.name"
+                        },
+                        "value": {
+                            "instanceOf": "string",
+                            "path": "attributes(intersightdevnet.host.name)"
+                        }
+                    },
+                    {
+                        "label": {
+                            "instanceOf": "text",
+                            "content": "intersightdevnet.account.name"
+                        },
+                        "value": {
+                            "instanceOf": "string",
+                            "path": "attributes(intersightdevnet.account.name)"
+                        }
+                    }
+                ]
+            },
+            "title": "Properties"
+        }
+    }
+}

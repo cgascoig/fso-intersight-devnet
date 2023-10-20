@@ -1,0 +1,32 @@
+{
+    "kind": "template",
+    "name": "intersightdevnet:accountInspectorWidget",
+    "target": "intersightdevnet:account",
+    "view": "default",
+    "element": {
+        "instanceOf": "elements",
+        "elements": {
+            "instanceOf": {
+                "name": "inspectorWidget"
+            },
+            "elements": {
+                "instanceOf": {
+                    "name": "properties"
+                },
+                "elements": [
+                    {
+                        "label": {
+                            "instanceOf": "text",
+                            "content": "intersightdevnet.account.name"
+                        },
+                        "value": {
+                            "instanceOf": "string",
+                            "path": "attributes(intersightdevnet.account.name)"
+                        }
+                    }
+                ]
+            },
+            "title": "Properties"
+        }
+    }
+}

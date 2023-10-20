@@ -1,0 +1,42 @@
+{
+    "kind": "template",
+    "name": "intersightdevnet:hyperflex_clusterInspectorWidget",
+    "target": "intersightdevnet:hyperflex_cluster",
+    "view": "default",
+    "element": {
+        "instanceOf": "elements",
+        "elements": {
+            "instanceOf": {
+                "name": "inspectorWidget"
+            },
+            "elements": {
+                "instanceOf": {
+                    "name": "properties"
+                },
+                "elements": [
+                    {
+                        "label": {
+                            "instanceOf": "text",
+                            "content": "intersightdevnet.account.name"
+                        },
+                        "value": {
+                            "instanceOf": "string",
+                            "path": "attributes(intersightdevnet.account.name)"
+                        }
+                    },
+                    {
+                        "label": {
+                            "instanceOf": "text",
+                            "content": "intersightdevnet.hyperflex.device.id"
+                        },
+                        "value": {
+                            "instanceOf": "string",
+                            "path": "attributes(intersightdevnet.hyperflex.device.id)"
+                        }
+                    }
+                ]
+            },
+            "title": "Properties"
+        }
+    }
+}

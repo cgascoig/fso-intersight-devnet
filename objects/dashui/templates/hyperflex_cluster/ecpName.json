@@ -1,0 +1,13 @@
+{
+    "kind": "template",
+    "name": "dashui:name",
+    "target": "intersightdevnet:hyperflex_cluster",
+    "view": "default",
+    "element": {
+        "instanceOf": "string",
+        "path": [
+            "attributes(intersightdevnet.hyperflex.device.id)",
+            "id"
+        ]
+    }
+}

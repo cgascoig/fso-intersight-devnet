@@ -1,0 +1,46 @@
+{
+    "kind": "template",
+    "name": "intersightdevnet:accountDetailsList",
+    "target": "intersightdevnet:account",
+    "view": "default",
+    "element": {
+        "instanceOf": "html",
+        "elements": [
+            {
+                "instanceOf": "card",
+                "props": {
+                    "title": "VM Count"
+                },
+                "elements": [
+                    {
+                        "instanceOf": "cartesian",
+                        "props": {
+                            "style": {
+                                "height": 250
+                            }
+                        },
+                        "children": [
+                            {
+                                "props": {
+                                    "name": "intersightdevnet:intersightdevnet.vm_count"
+                                },
+                                "metric": {
+                                    "name": "intersightdevnet:intersightdevnet.vm_count",
+                                    "y": {
+                                        "type": "value"
+                                    }
+                                },
+                                "type": "LINE"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "style": {
+            "display": "flex",
+            "flexDirection": "column",
+            "gap": 12
+        }
+    }
+}

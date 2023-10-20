@@ -1,0 +1,47 @@
+{
+    "kind": "template",
+    "name": "intersightdevnet:ucs_domainDetailsList",
+    "target": "intersightdevnet:ucs_domain",
+    "view": "default",
+    "element": {
+        "instanceOf": "html",
+        "elements": [
+            {
+                "instanceOf": "card",
+                "props": {
+                    "title": "UCS Domain Average Network Utilization"
+                },
+                "elements": [
+                    {
+                        "instanceOf": "cartesian",
+                        "props": {
+                            "style": {
+                                "height": 250
+                            }
+                        },
+                        "children": [
+                            {
+                                "props": {
+                                    "name": "intersightdevnet:intersightdevnet.ucs.network.utilization.average"
+                                },
+                                "metric": {
+                                    "name": "intersightdevnet:intersightdevnet.ucs.network.utilization.average",
+                                    "source": "intersight-otel",
+                                    "y": {
+                                        "type": "value"
+                                    }
+                                },
+                                "type": "LINE"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "style": {
+            "display": "flex",
+            "flexDirection": "column",
+            "gap": 12
+        }
+    }
+}

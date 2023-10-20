@@ -1,0 +1,19 @@
+{
+    "kind": "template",
+    "name": "dashui:ecpDetailsInspector",
+    "target": "intersightdevnet:ucs_domain",
+    "view": "default",
+    "element": {
+        "instanceOf": "elements",
+        "elements": [
+            {
+                "instanceOf": {
+                    "name": "alerting"
+                }
+            },
+            {
+                "instanceOf": "intersightdevnet:ucs_domainInspectorWidget"
+            }
+        ]
+    }
+}

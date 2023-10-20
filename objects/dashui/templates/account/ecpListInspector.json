@@ -1,0 +1,33 @@
+{
+    "kind": "template",
+    "name": "dashui:ecpListInspector",
+    "target": "intersightdevnet:account",
+    "view": "default",
+    "element": {
+        "instanceOf": "elements",
+        "elements": [
+            {
+                "instanceOf": "focusedEntities",
+                "element": {
+                    "instanceOf": {
+                        "name": "nameWidget"
+                    },
+                    "path": [
+                        "attributes(intersightdevnet.account.name)",
+                        "id"
+                    ]
+                },
+                "mode": "SINGLE"
+            },
+            {
+                "instanceOf": "focusedEntities",
+                "element": {
+                    "instanceOf": {
+                        "name": "intersightdevnet:accountInspectorWidget"
+                    }
+                },
+                "mode": "SINGLE"
+            }
+        ]
+    }
+}

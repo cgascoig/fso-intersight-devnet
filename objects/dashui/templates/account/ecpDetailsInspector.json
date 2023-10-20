@@ -1,0 +1,19 @@
+{
+    "kind": "template",
+    "name": "dashui:ecpDetailsInspector",
+    "target": "intersightdevnet:account",
+    "view": "default",
+    "element": {
+        "instanceOf": "elements",
+        "elements": [
+            {
+                "instanceOf": {
+                    "name": "alerting"
+                }
+            },
+            {
+                "instanceOf": "intersightdevnet:accountInspectorWidget"
+            }
+        ]
+    }
+}
