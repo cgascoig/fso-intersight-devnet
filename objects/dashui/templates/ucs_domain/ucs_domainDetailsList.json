@@ -36,6 +36,68 @@
                         ]
                     }
                 ]
+            },
+            {
+                "instanceOf": "card",
+                "props": {
+                    "title": "UCS Domain Network Receive Rate"
+                },
+                "elements": [
+                    {
+                        "instanceOf": "cartesian",
+                        "props": {
+                            "style": {
+                                "height": 250
+                            }
+                        },
+                        "children": [
+                            {
+                                "props": {
+                                    "name": "intersightdevnet:intersightdevnet.ucs.network.receive.rate"
+                                },
+                                "metric": {
+                                    "name": "intersightdevnet:intersightdevnet.ucs.network.receive.rate",
+                                    "source": "intersight-otel",
+                                    "y": {
+                                        "type": "value"
+                                    }
+                                },
+                                "type": "LINE"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "instanceOf": "card",
+                "props": {
+                    "title": "UCS Domain Network Transmit Rate"
+                },
+                "elements": [
+                    {
+                        "instanceOf": "cartesian",
+                        "props": {
+                            "style": {
+                                "height": 250
+                            }
+                        },
+                        "children": [
+                            {
+                                "props": {
+                                    "name": "intersightdevnet:intersightdevnet.ucs.network.transmit.rate"
+                                },
+                                "metric": {
+                                    "name": "intersightdevnet:intersightdevnet.ucs.network.transmit.rate",
+                                    "source": "intersight-otel",
+                                    "y": {
+                                        "type": "value"
+                                    }
+                                },
+                                "type": "LINE"
+                            }
+                        ]
+                    }
+                ]
             }
         ],
         "style": {

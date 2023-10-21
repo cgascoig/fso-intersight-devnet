@@ -80,6 +80,90 @@
                 "instanceOf": {
                     "name": "inspectorWidget"
                 }
+            },
+            {
+                "elements": [
+                    {
+                        "additionalInformation": {
+                            "branches": [
+                                {
+                                    "elements": {
+                                        "instanceOf": "empty"
+                                    },
+                                    "value": null
+                                }
+                            ],
+                            "defaultElements": {
+                                "elements": [
+                                    {
+                                        "emptyContent": "0",
+                                        "instanceOf": "number",
+                                        "path": "metrics(intersightdevnet:intersightdevnet.ucs.network.receive.rate, \"intersight-otel\").value"
+                                    },
+                                    {
+                                        "content": " bytes/sec",
+                                        "instanceOf": "text"
+                                    }
+                                ],
+                                "instanceOf": "elements"
+                            },
+                            "path": "metrics(intersightdevnet:intersightdevnet.ucs.network.receive.rate, \"intersight-otel\").value"
+                        },
+                        "graph": {
+                            "path": "intersightdevnet:intersightdevnet.ucs.network.receive.rate",
+                            "source": "intersight-otel"
+                        },
+                        "headline": "UCS Network Receive Rate",
+                        "instanceOf": {
+                            "name": "intersightdevnet:sparkgraph"
+                        }
+                    }
+                ],
+                "instanceOf": {
+                    "name": "inspectorWidget"
+                }
+            },
+            {
+                "elements": [
+                    {
+                        "additionalInformation": {
+                            "branches": [
+                                {
+                                    "elements": {
+                                        "instanceOf": "empty"
+                                    },
+                                    "value": null
+                                }
+                            ],
+                            "defaultElements": {
+                                "elements": [
+                                    {
+                                        "emptyContent": "0",
+                                        "instanceOf": "number",
+                                        "path": "metrics(intersightdevnet:intersightdevnet.ucs.network.transmit.rate, \"intersight-otel\").value"
+                                    },
+                                    {
+                                        "content": " bytes/sec",
+                                        "instanceOf": "text"
+                                    }
+                                ],
+                                "instanceOf": "elements"
+                            },
+                            "path": "metrics(intersightdevnet:intersightdevnet.ucs.network.transmit.rate, \"intersight-otel\").value"
+                        },
+                        "graph": {
+                            "path": "intersightdevnet:intersightdevnet.ucs.network.transmit.rate",
+                            "source": "intersight-otel"
+                        },
+                        "headline": "UCS Network Transmit Rate",
+                        "instanceOf": {
+                            "name": "intersightdevnet:sparkgraph"
+                        }
+                    }
+                ],
+                "instanceOf": {
+                    "name": "inspectorWidget"
+                }
             }
         ]
     }

@@ -82,6 +82,34 @@
                 "flex": 0,
                 "label": "Network Utilization",
                 "width": 150
+            },
+            {
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "trigger": {
+                            "instanceOf": "number",
+                            "path": "metrics(\"intersightdevnet:intersightdevnet.ucs.network.receive.rate\", \"intersight-otel\").value"
+                        }
+                    }
+                },
+                "flex": 0,
+                "label": "Network Receive Rate",
+                "width": 150
+            },
+            {
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "trigger": {
+                            "instanceOf": "number",
+                            "path": "metrics(\"intersightdevnet:intersightdevnet.ucs.network.transmit.rate\", \"intersight-otel\").value"
+                        }
+                    }
+                },
+                "flex": 0,
+                "label": "Network Transmit Rate",
+                "width": 150
             }
         ],
         "onRowSingleClick": {

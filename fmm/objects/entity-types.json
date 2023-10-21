@@ -109,7 +109,9 @@
             }
         },
         "metricTypes": [
-            "intersightdevnet:intersightdevnet.ucs.network.utilization.average"
+            "intersightdevnet:intersightdevnet.ucs.network.utilization.average",
+            "intersightdevnet:intersightdevnet.ucs.network.transmit.rate",
+            "intersightdevnet:intersightdevnet.ucs.network.receive.rate"
         ]
     }
 ]

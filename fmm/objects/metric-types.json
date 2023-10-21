@@ -150,5 +150,43 @@
         "ingestGranularities": [
             60
         ]
+    },
+    {
+        "namespace": {
+            "name": "intersightdevnet",
+            "version": 1
+        },
+        "kind": "metric",
+        "name": "intersightdevnet.ucs.network.receive.rate",
+        "displayName": "UCS Domain Network Receive Rate",
+        "description": "UCS Domain Network Receive Rate",
+        "category": "current",
+        "contentType": "gauge",
+        "aggregationTemporality": "unspecified",
+        "isMonotonic": false,
+        "type": "double",
+        "unit": "{count}",
+        "ingestGranularities": [
+            60
+        ]
+    },
+    {
+        "namespace": {
+            "name": "intersightdevnet",
+            "version": 1
+        },
+        "kind": "metric",
+        "name": "intersightdevnet.ucs.network.transmit.rate",
+        "displayName": "UCS Domain Network Transmit Rate",
+        "description": "UCS Domain Network Transmit Rate",
+        "category": "current",
+        "contentType": "gauge",
+        "aggregationTemporality": "unspecified",
+        "isMonotonic": false,
+        "type": "double",
+        "unit": "{count}",
+        "ingestGranularities": [
+            60
+        ]
     }
 ]
