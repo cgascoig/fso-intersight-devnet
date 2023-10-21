@@ -51,6 +51,20 @@
                         }
                     }
                 }
+            },
+            {
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "trigger": {
+                            "instanceOf": "number",
+                            "path": "metrics(\"intersightdevnet:intersightdevnet.vm_count\", \"intersight-otel\").value"
+                        }
+                    }
+                },
+                "flex": 0,
+                "label": "VM Count",
+                "width": 150
             }
         ],
         "onRowSingleClick": {

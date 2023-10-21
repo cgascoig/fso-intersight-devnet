@@ -68,6 +68,90 @@
                         }
                     }
                 }
+            },
+            {
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "trigger": {
+                            "instanceOf": "number",
+                            "path": "metrics(\"intersightdevnet:intersightdevnet.hyperflex.read.iops\", \"intersight-otel\").value"
+                        }
+                    }
+                },
+                "flex": 0,
+                "label": "Read IOPs",
+                "width": 150
+            },
+            {
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "trigger": {
+                            "instanceOf": "number",
+                            "path": "metrics(\"intersightdevnet:intersightdevnet.hyperflex.write.iops\", \"intersight-otel\").value"
+                        }
+                    }
+                },
+                "flex": 0,
+                "label": "Write IOPs",
+                "width": 150
+            },
+            {
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "trigger": {
+                            "instanceOf": "number",
+                            "path": "metrics(\"intersightdevnet:intersightdevnet.hyperflex.read.latency\", \"intersight-otel\").value"
+                        }
+                    }
+                },
+                "flex": 0,
+                "label": "Read Latency",
+                "width": 150
+            },
+            {
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "trigger": {
+                            "instanceOf": "number",
+                            "path": "metrics(\"intersightdevnet:intersightdevnet.hyperflex.write.latency\", \"intersight-otel\").value"
+                        }
+                    }
+                },
+                "flex": 0,
+                "label": "Write Latency",
+                "width": 150
+            },
+            {
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "trigger": {
+                            "instanceOf": "number",
+                            "path": "metrics(\"intersightdevnet:intersightdevnet.hyperflex.read.throughput\", \"intersight-otel\").value"
+                        }
+                    }
+                },
+                "flex": 0,
+                "label": "Read Throughput",
+                "width": 150
+            },
+            {
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "trigger": {
+                            "instanceOf": "number",
+                            "path": "metrics(\"intersightdevnet:intersightdevnet.hyperflex.write.throughput\", \"intersight-otel\").value"
+                        }
+                    }
+                },
+                "flex": 0,
+                "label": "Write Throughput",
+                "width": 150
             }
         ],
         "onRowSingleClick": {

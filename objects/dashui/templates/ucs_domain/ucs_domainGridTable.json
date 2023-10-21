@@ -68,6 +68,20 @@
                         }
                     }
                 }
+            },
+            {
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "trigger": {
+                            "instanceOf": "number",
+                            "path": "metrics(\"intersightdevnet:intersightdevnet.ucs.network.utilization.average\", \"intersight-otel\").value"
+                        }
+                    }
+                },
+                "flex": 0,
+                "label": "Network Utilization",
+                "width": 150
             }
         ],
         "onRowSingleClick": {
