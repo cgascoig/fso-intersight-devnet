@@ -5,28 +5,72 @@
     "view": "default",
     "element": {
         "instanceOf": "elements",
-        "elements": {
-            "instanceOf": {
-                "name": "inspectorWidget"
-            },
-            "elements": {
+        "elements": [
+            {
                 "instanceOf": {
-                    "name": "properties"
+                    "name": "inspectorWidget"
                 },
+                "elements": {
+                    "instanceOf": {
+                        "name": "properties"
+                    },
+                    "elements": [
+                        {
+                            "label": {
+                                "instanceOf": "text",
+                                "content": "intersightdevnet.account.name"
+                            },
+                            "value": {
+                                "instanceOf": "string",
+                                "path": "attributes(intersightdevnet.account.name)"
+                            }
+                        }
+                    ]
+                },
+                "title": "Properties"
+            },
+            {
                 "elements": [
                     {
-                        "label": {
-                            "instanceOf": "text",
-                            "content": "intersightdevnet.account.name"
+                        "additionalInformation": {
+                            "branches": [
+                                {
+                                    "elements": {
+                                        "instanceOf": "empty"
+                                    },
+                                    "value": null
+                                }
+                            ],
+                            "defaultElements": {
+                                "elements": [
+                                    {
+                                        "emptyContent": "0",
+                                        "instanceOf": "number",
+                                        "path": "metrics(intersightdevnet:intersightdevnet.vm_count, \"intersight-otel\").value"
+                                    },
+                                    {
+                                        "content": " virtual machines",
+                                        "instanceOf": "text"
+                                    }
+                                ],
+                                "instanceOf": "elements"
+                            },
+                            "path": "metrics(intersightdevnet:intersightdevnet.vm_count, \"intersight-otel\").value"
                         },
-                        "value": {
-                            "instanceOf": "string",
-                            "path": "attributes(intersightdevnet.account.name)"
+                        "graph": {
+                            "path": "intersightdevnet:intersightdevnet.vm_count",
+                            "source": "intersight-otel"
+                        },
+                        "headline": "Virtual Machine Count",
+                        "instanceOf": {
+                            "name": "intersightdevnet:sparkgraph"
                         }
                     }
-                ]
-            },
-            "title": "Properties"
-        }
+                ],
+                "instanceOf": {
+                    "name": "inspectorWidget"
+                }
+            }
+        ]
     }
 }

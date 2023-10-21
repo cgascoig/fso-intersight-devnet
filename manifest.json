@@ -1,7 +1,7 @@
 {
     "manifestVersion": "1.0.0",
     "name": "intersightdevnet",
-    "solutionVersion": "0.1.64",
+    "solutionVersion": "0.1.65",
     "dependencies": [
         "dashui",
         "fmm",
@@ -68,6 +68,10 @@
         {
             "type": "dashui:template",
             "objectsDir": "objects/dashui/templates/ucs_domain"
+        },
+        {
+            "type": "dashui:template",
+            "objectsDir": "objects/dashui/templates/shared"
         }
     ]
 }
