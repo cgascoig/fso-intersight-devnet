@@ -1,0 +1,46 @@
+{
+    "kind": "template",
+    "name": "intersightdevnetpod12:accountDetailsList",
+    "target": "intersightdevnetpod12:account",
+    "view": "default",
+    "element": {
+        "instanceOf": "html",
+        "elements": [
+            {
+                "instanceOf": "card",
+                "props": {
+                    "title": "VM Count"
+                },
+                "elements": [
+                    {
+                        "instanceOf": "cartesian",
+                        "props": {
+                            "style": {
+                                "height": 250
+                            }
+                        },
+                        "children": [
+                            {
+                                "props": {
+                                    "name": "intersightdevnetpod12:intersightdevnetpod12.vm_count"
+                                },
+                                "metric": {
+                                    "name": "intersightdevnetpod12:intersightdevnetpod12.vm_count",
+                                    "y": {
+                                        "type": "value"
+                                    }
+                                },
+                                "type": "LINE"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "style": {
+            "display": "flex",
+            "flexDirection": "column",
+            "gap": 12
+        }
+    }
+}

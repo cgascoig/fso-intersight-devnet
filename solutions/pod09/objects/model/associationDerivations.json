@@ -1,0 +1,78 @@
+[
+    {
+        "namespace": {
+            "name": "intersightdevnetpod09",
+            "version": 1
+        },
+        "kind": "associationDerivation",
+        "name": "intersightdevnetpod09_account_to_hyperflex_cluster",
+        "displayName": "Intersight account to HX cluster",
+        "description": "Intersight account to HX cluster",
+        "scopeFilter": "true",
+        "fromType": "intersightdevnetpod09:account",
+        "toType": "intersightdevnetpod09:hyperflex_cluster",
+        "associationType": "common:consists_of",
+        "mappings": {
+            "attributes": {
+                "intersightdevnetpod09.account.name": "this.attributes.'intersightdevnetpod09.account.name'"
+            }
+        }
+    },
+    {
+        "namespace": {
+            "name": "intersightdevnetpod09",
+            "version": 1
+        },
+        "kind": "associationDerivation",
+        "name": "intersightdevnetpod09_hyperflex_cluster_to_account",
+        "displayName": "Intersight HX cluster to account",
+        "description": "Intersight HX cluster to account",
+        "scopeFilter": "true",
+        "toType": "intersightdevnetpod09:account",
+        "fromType": "intersightdevnetpod09:hyperflex_cluster",
+        "associationType": "common:consists_of",
+        "mappings": {
+            "attributes": {
+                "intersightdevnetpod09.account.name": "this.attributes.'intersightdevnetpod09.account.name'"
+            }
+        }
+    },
+    {
+        "namespace": {
+            "name": "intersightdevnetpod09",
+            "version": 1
+        },
+        "kind": "associationDerivation",
+        "name": "intersightdevnetpod09_account_to_ucs_domain",
+        "displayName": "Intersight account to UCS Domain",
+        "description": "Intersight account to UCS Domain",
+        "scopeFilter": "true",
+        "fromType": "intersightdevnetpod09:account",
+        "toType": "intersightdevnetpod09:ucs_domain",
+        "associationType": "common:consists_of",
+        "mappings": {
+            "attributes": {
+                "intersightdevnetpod09.account.name": "this.attributes.'intersightdevnetpod09.account.name'"
+            }
+        }
+    },
+    {
+        "namespace": {
+            "name": "intersightdevnetpod09",
+            "version": 1
+        },
+        "kind": "associationDerivation",
+        "name": "intersightdevnetpod09_ucs_domain_to_account",
+        "displayName": "Intersight UCS Domain to account",
+        "description": "Intersight UCS Domain to account",
+        "scopeFilter": "true",
+        "toType": "intersightdevnetpod09:account",
+        "fromType": "intersightdevnetpod09:ucs_domain",
+        "associationType": "common:consists_of",
+        "mappings": {
+            "attributes": {
+                "intersightdevnetpod09.account.name": "this.attributes.'intersightdevnetpod09.account.name'"
+            }
+        }
+    }
+]

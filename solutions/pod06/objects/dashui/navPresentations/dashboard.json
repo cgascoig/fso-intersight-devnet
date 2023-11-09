@@ -1,0 +1,10 @@
+{
+    "kind": "navPresentation",
+    "id": "intersightdevnetpod06:dashboardNavPresentation",
+    "title": "Intersight",
+    "icon": "ChartType.WorldMap",
+    "destination": {
+        "type": "path",
+        "value": "/templates/v1/intersightdevnetpod06:intersightDashboard?ctx.since=now+-1d"
+    }
+}

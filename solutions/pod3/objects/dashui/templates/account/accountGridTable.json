@@ -1,0 +1,79 @@
+{
+    "kind": "template",
+    "name": "intersightdevnetpod3:accountGridTable",
+    "target": "intersightdevnetpod3:account",
+    "view": "default",
+    "element": {
+        "instanceOf": "grid",
+        "rowSets": {
+            "default": {
+                "keyPath": "id"
+            }
+        },
+        "mode": "server",
+        "columns": [
+            {
+                "label": "Health",
+                "flex": 0,
+                "width": 80,
+                "cell": {
+                    "default": {
+                        "instanceOf": {
+                            "name": "health"
+                        }
+                    }
+                }
+            },
+            {
+                "label": "Account Name",
+                "flex": 0,
+                "width": 240,
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "truncate": true,
+                        "trigger": {
+                            "instanceOf": "clickable",
+                            "onclick": {
+                                "type": "navigate.entity.detail",
+                                "paths": [
+                                    "id"
+                                ],
+                                "expression": "$ ~> |$|{\"id\": $data[0]}|"
+                            },
+                            "trigger": {
+                                "instanceOf": "string",
+                                "path": [
+                                    "attributes(intersightdevnetpod3.account.name)",
+                                    "id"
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "trigger": {
+                            "instanceOf": "number",
+                            "path": "metrics(\"intersightdevnetpod3:intersightdevnetpod3.vm_count\", \"intersight-otel\").value"
+                        }
+                    }
+                },
+                "flex": 0,
+                "label": "VM Count",
+                "width": 150
+            }
+        ],
+        "onRowSingleClick": {
+            "type": "common.focusEntity",
+            "expression": "{ \"id\": $params.key }"
+        },
+        "onRowDoubleClick": {
+            "type": "navigate.entity.detail",
+            "expression": "{ \"id\": $params.key }"
+        }
+    }
+}

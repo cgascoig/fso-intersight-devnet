@@ -1,0 +1,23 @@
+{
+    "kind": "template",
+    "name": "dashui:ecpRelationshipMap",
+    "target": "intersightdevnetpod11:hyperflex_cluster",
+    "view": "default",
+    "element": {
+        "instanceOf": "leftbar",
+        "elements": [
+            {
+                "key": "hyperflex_cluster",
+                "path": ".",
+                "entityAttribute": "intersightdevnetpod11.hyperflex.device.id",
+                "iconName": "AgentType.Appd"
+            },
+            {
+                "key": "account",
+                "path": "in(common:consists_of).from(intersightdevnetpod11:account)",
+                "entityAttribute": "intersightdevnetpod11.account.name",
+                "iconName": "AgentType.Appd"
+            }
+        ]
+    }
+}

@@ -1,0 +1,166 @@
+{
+    "kind": "template",
+    "name": "intersightdevnetpod15:hyperflex_clusterGridTable",
+    "target": "intersightdevnetpod15:hyperflex_cluster",
+    "view": "default",
+    "element": {
+        "instanceOf": "grid",
+        "rowSets": {
+            "default": {
+                "keyPath": "id"
+            }
+        },
+        "mode": "server",
+        "columns": [
+            {
+                "label": "Health",
+                "flex": 0,
+                "width": 80,
+                "cell": {
+                    "default": {
+                        "instanceOf": {
+                            "name": "health"
+                        }
+                    }
+                }
+            },
+            {
+                "label": "Account Name",
+                "flex": 0,
+                "width": 240,
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "truncate": true,
+                        "trigger": {
+                            "instanceOf": "clickable",
+                            "onclick": {
+                                "type": "navigate.entity.detail",
+                                "paths": [
+                                    "id"
+                                ],
+                                "expression": "$ ~> |$|{\"id\": $data[0]}|"
+                            },
+                            "trigger": {
+                                "instanceOf": "string",
+                                "path": [
+                                    "attributes(intersightdevnetpod15.account.name)",
+                                    "id"
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "label": "Cluster Device ID",
+                "flex": 0,
+                "width": 240,
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "truncate": true,
+                        "trigger": {
+                            "instanceOf": "string",
+                            "path": [
+                                "attributes(intersightdevnetpod15.hyperflex.device.id)"
+                            ]
+                        }
+                    }
+                }
+            },
+            {
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "trigger": {
+                            "instanceOf": "number",
+                            "path": "metrics(\"intersightdevnetpod15:intersightdevnetpod15.hyperflex.read.iops\", \"intersight-otel\").value"
+                        }
+                    }
+                },
+                "flex": 0,
+                "label": "Read IOPs",
+                "width": 150
+            },
+            {
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "trigger": {
+                            "instanceOf": "number",
+                            "path": "metrics(\"intersightdevnetpod15:intersightdevnetpod15.hyperflex.write.iops\", \"intersight-otel\").value"
+                        }
+                    }
+                },
+                "flex": 0,
+                "label": "Write IOPs",
+                "width": 150
+            },
+            {
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "trigger": {
+                            "instanceOf": "number",
+                            "path": "metrics(\"intersightdevnetpod15:intersightdevnetpod15.hyperflex.read.latency\", \"intersight-otel\").value"
+                        }
+                    }
+                },
+                "flex": 0,
+                "label": "Read Latency",
+                "width": 150
+            },
+            {
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "trigger": {
+                            "instanceOf": "number",
+                            "path": "metrics(\"intersightdevnetpod15:intersightdevnetpod15.hyperflex.write.latency\", \"intersight-otel\").value"
+                        }
+                    }
+                },
+                "flex": 0,
+                "label": "Write Latency",
+                "width": 150
+            },
+            {
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "trigger": {
+                            "instanceOf": "number",
+                            "path": "metrics(\"intersightdevnetpod15:intersightdevnetpod15.hyperflex.read.throughput\", \"intersight-otel\").value"
+                        }
+                    }
+                },
+                "flex": 0,
+                "label": "Read Throughput",
+                "width": 150
+            },
+            {
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "trigger": {
+                            "instanceOf": "number",
+                            "path": "metrics(\"intersightdevnetpod15:intersightdevnetpod15.hyperflex.write.throughput\", \"intersight-otel\").value"
+                        }
+                    }
+                },
+                "flex": 0,
+                "label": "Write Throughput",
+                "width": 150
+            }
+        ],
+        "onRowSingleClick": {
+            "type": "common.focusEntity",
+            "expression": "{ \"id\": $params.key }"
+        },
+        "onRowDoubleClick": {
+            "type": "navigate.entity.detail",
+            "expression": "{ \"id\": $params.key }"
+        }
+    }
+}

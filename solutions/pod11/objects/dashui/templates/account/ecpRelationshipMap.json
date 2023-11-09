@@ -1,0 +1,29 @@
+{
+    "kind": "template",
+    "name": "dashui:ecpRelationshipMap",
+    "target": "intersightdevnetpod11:account",
+    "view": "default",
+    "element": {
+        "instanceOf": "leftbar",
+        "elements": [
+            {
+                "key": "account",
+                "path": ".",
+                "entityAttribute": "intersightdevnetpod11.account.name",
+                "iconName": "AgentType.Appd"
+            },
+            {
+                "key": "hyperflex_cluster",
+                "path": "out(common:consists_of).to(intersightdevnetpod11:hyperflex_cluster)",
+                "entityAttribute": "intersightdevnetpod11.hyperflex.device.id",
+                "iconName": "AgentType.Appd"
+            },
+            {
+                "key": "ucs_domain",
+                "path": "out(common:consists_of).to(intersightdevnetpod11:ucs_domain)",
+                "entityAttribute": "intersightdevnetpod11.host.name",
+                "iconName": "AgentType.Appd"
+            }
+        ]
+    }
+}

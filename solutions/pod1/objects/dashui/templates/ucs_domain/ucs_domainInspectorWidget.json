@@ -1,0 +1,170 @@
+{
+    "kind": "template",
+    "name": "intersightdevnetpod1:ucs_domainInspectorWidget",
+    "target": "intersightdevnetpod1:ucs_domain",
+    "view": "default",
+    "element": {
+        "instanceOf": "elements",
+        "elements": [
+            {
+                "instanceOf": {
+                    "name": "inspectorWidget"
+                },
+                "elements": {
+                    "instanceOf": {
+                        "name": "properties"
+                    },
+                    "elements": [
+                        {
+                            "label": {
+                                "instanceOf": "text",
+                                "content": "intersightdevnetpod1.host.name"
+                            },
+                            "value": {
+                                "instanceOf": "string",
+                                "path": "attributes(intersightdevnetpod1.host.name)"
+                            }
+                        },
+                        {
+                            "label": {
+                                "instanceOf": "text",
+                                "content": "intersightdevnetpod1.account.name"
+                            },
+                            "value": {
+                                "instanceOf": "string",
+                                "path": "attributes(intersightdevnetpod1.account.name)"
+                            }
+                        }
+                    ]
+                },
+                "title": "Properties"
+            },
+            {
+                "elements": [
+                    {
+                        "additionalInformation": {
+                            "branches": [
+                                {
+                                    "elements": {
+                                        "instanceOf": "empty"
+                                    },
+                                    "value": null
+                                }
+                            ],
+                            "defaultElements": {
+                                "elements": [
+                                    {
+                                        "emptyContent": "0",
+                                        "instanceOf": "number",
+                                        "path": "metrics(intersightdevnetpod1:intersightdevnetpod1.ucs.network.utilization.average, \"intersight-otel\").value"
+                                    },
+                                    {
+                                        "content": " %",
+                                        "instanceOf": "text"
+                                    }
+                                ],
+                                "instanceOf": "elements"
+                            },
+                            "path": "metrics(intersightdevnetpod1:intersightdevnetpod1.ucs.network.utilization.average, \"intersight-otel\").value"
+                        },
+                        "graph": {
+                            "path": "intersightdevnetpod1:intersightdevnetpod1.ucs.network.utilization.average",
+                            "source": "intersight-otel"
+                        },
+                        "headline": "UCS Average Network Utilization",
+                        "instanceOf": {
+                            "name": "intersightdevnetpod1:sparkgraph"
+                        }
+                    }
+                ],
+                "instanceOf": {
+                    "name": "inspectorWidget"
+                }
+            },
+            {
+                "elements": [
+                    {
+                        "additionalInformation": {
+                            "branches": [
+                                {
+                                    "elements": {
+                                        "instanceOf": "empty"
+                                    },
+                                    "value": null
+                                }
+                            ],
+                            "defaultElements": {
+                                "elements": [
+                                    {
+                                        "emptyContent": "0",
+                                        "instanceOf": "number",
+                                        "path": "metrics(intersightdevnetpod1:intersightdevnetpod1.ucs.network.receive.rate, \"intersight-otel\").value"
+                                    },
+                                    {
+                                        "content": " bytes/sec",
+                                        "instanceOf": "text"
+                                    }
+                                ],
+                                "instanceOf": "elements"
+                            },
+                            "path": "metrics(intersightdevnetpod1:intersightdevnetpod1.ucs.network.receive.rate, \"intersight-otel\").value"
+                        },
+                        "graph": {
+                            "path": "intersightdevnetpod1:intersightdevnetpod1.ucs.network.receive.rate",
+                            "source": "intersight-otel"
+                        },
+                        "headline": "UCS Network Receive Rate",
+                        "instanceOf": {
+                            "name": "intersightdevnetpod1:sparkgraph"
+                        }
+                    }
+                ],
+                "instanceOf": {
+                    "name": "inspectorWidget"
+                }
+            },
+            {
+                "elements": [
+                    {
+                        "additionalInformation": {
+                            "branches": [
+                                {
+                                    "elements": {
+                                        "instanceOf": "empty"
+                                    },
+                                    "value": null
+                                }
+                            ],
+                            "defaultElements": {
+                                "elements": [
+                                    {
+                                        "emptyContent": "0",
+                                        "instanceOf": "number",
+                                        "path": "metrics(intersightdevnetpod1:intersightdevnetpod1.ucs.network.transmit.rate, \"intersight-otel\").value"
+                                    },
+                                    {
+                                        "content": " bytes/sec",
+                                        "instanceOf": "text"
+                                    }
+                                ],
+                                "instanceOf": "elements"
+                            },
+                            "path": "metrics(intersightdevnetpod1:intersightdevnetpod1.ucs.network.transmit.rate, \"intersight-otel\").value"
+                        },
+                        "graph": {
+                            "path": "intersightdevnetpod1:intersightdevnetpod1.ucs.network.transmit.rate",
+                            "source": "intersight-otel"
+                        },
+                        "headline": "UCS Network Transmit Rate",
+                        "instanceOf": {
+                            "name": "intersightdevnetpod1:sparkgraph"
+                        }
+                    }
+                ],
+                "instanceOf": {
+                    "name": "inspectorWidget"
+                }
+            }
+        ]
+    }
+}

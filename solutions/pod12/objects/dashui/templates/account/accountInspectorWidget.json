@@ -1,0 +1,76 @@
+{
+    "kind": "template",
+    "name": "intersightdevnetpod12:accountInspectorWidget",
+    "target": "intersightdevnetpod12:account",
+    "view": "default",
+    "element": {
+        "instanceOf": "elements",
+        "elements": [
+            {
+                "instanceOf": {
+                    "name": "inspectorWidget"
+                },
+                "elements": {
+                    "instanceOf": {
+                        "name": "properties"
+                    },
+                    "elements": [
+                        {
+                            "label": {
+                                "instanceOf": "text",
+                                "content": "intersightdevnetpod12.account.name"
+                            },
+                            "value": {
+                                "instanceOf": "string",
+                                "path": "attributes(intersightdevnetpod12.account.name)"
+                            }
+                        }
+                    ]
+                },
+                "title": "Properties"
+            },
+            {
+                "elements": [
+                    {
+                        "additionalInformation": {
+                            "branches": [
+                                {
+                                    "elements": {
+                                        "instanceOf": "empty"
+                                    },
+                                    "value": null
+                                }
+                            ],
+                            "defaultElements": {
+                                "elements": [
+                                    {
+                                        "emptyContent": "0",
+                                        "instanceOf": "number",
+                                        "path": "metrics(intersightdevnetpod12:intersightdevnetpod12.vm_count, \"intersight-otel\").value"
+                                    },
+                                    {
+                                        "content": " virtual machines",
+                                        "instanceOf": "text"
+                                    }
+                                ],
+                                "instanceOf": "elements"
+                            },
+                            "path": "metrics(intersightdevnetpod12:intersightdevnetpod12.vm_count, \"intersight-otel\").value"
+                        },
+                        "graph": {
+                            "path": "intersightdevnetpod12:intersightdevnetpod12.vm_count",
+                            "source": "intersight-otel"
+                        },
+                        "headline": "Virtual Machine Count",
+                        "instanceOf": {
+                            "name": "intersightdevnetpod12:sparkgraph"
+                        }
+                    }
+                ],
+                "instanceOf": {
+                    "name": "inspectorWidget"
+                }
+            }
+        ]
+    }
+}

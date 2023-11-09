@@ -1,0 +1,117 @@
+[
+    {
+        "namespace": {
+            "name": "intersightdevnetpod2",
+            "version": 1
+        },
+        "kind": "entity",
+        "name": "account",
+        "displayName": "Account",
+        "lifecycleConfiguration": {
+            "purgeTtlInMinutes": 4200,
+            "retentionTtlInMinutes": 1440
+        },
+        "attributeDefinitions": {
+            "optimized": [
+                "intersightdevnetpod2.account.name"
+            ],
+            "required": [
+                "intersightdevnetpod2.account.name"
+            ],
+            "attributes": {
+                "intersightdevnetpod2.account.name": {
+                    "type": "string",
+                    "description": "Name of Intersight Account"
+                }
+            }
+        },
+        "metricTypes": [
+            "intersightdevnetpod2:intersightdevnetpod2.vm_count"
+        ],
+        "associationTypes": {
+            "common:consists_of": [
+                "intersightdevnetpod2:hyperflex_cluster",
+                "intersightdevnetpod2:ucs_domain"
+            ]
+        }
+    },
+    {
+        "namespace": {
+            "name": "intersightdevnetpod2",
+            "version": 1
+        },
+        "kind": "entity",
+        "name": "hyperflex_cluster",
+        "displayName": "Hyperflex Cluster",
+        "lifecycleConfiguration": {
+            "purgeTtlInMinutes": 4200,
+            "retentionTtlInMinutes": 1440
+        },
+        "attributeDefinitions": {
+            "optimized": [
+                "intersightdevnetpod2.account.name",
+                "intersightdevnetpod2.hyperflex.device.id"
+            ],
+            "required": [
+                "intersightdevnetpod2.account.name",
+                "intersightdevnetpod2.hyperflex.device.id"
+            ],
+            "attributes": {
+                "intersightdevnetpod2.account.name": {
+                    "type": "string",
+                    "description": "Name of Intersight Account"
+                },
+                "intersightdevnetpod2.hyperflex.device.id": {
+                    "type": "string",
+                    "description": "Hyperflex cluster ID"
+                }
+            }
+        },
+        "metricTypes": [
+            "intersightdevnetpod2:intersightdevnetpod2.hyperflex.read.iops",
+            "intersightdevnetpod2:intersightdevnetpod2.hyperflex.write.iops",
+            "intersightdevnetpod2:intersightdevnetpod2.hyperflex.read.throughput",
+            "intersightdevnetpod2:intersightdevnetpod2.hyperflex.write.throughput",
+            "intersightdevnetpod2:intersightdevnetpod2.hyperflex.read.latency",
+            "intersightdevnetpod2:intersightdevnetpod2.hyperflex.write.latency"
+        ]
+    },
+    {
+        "namespace": {
+            "name": "intersightdevnetpod2",
+            "version": 1
+        },
+        "kind": "entity",
+        "name": "ucs_domain",
+        "displayName": "UCS Domain",
+        "lifecycleConfiguration": {
+            "purgeTtlInMinutes": 4200,
+            "retentionTtlInMinutes": 1440
+        },
+        "attributeDefinitions": {
+            "optimized": [
+                "intersightdevnetpod2.account.name",
+                "intersightdevnetpod2.host.name"
+            ],
+            "required": [
+                "intersightdevnetpod2.account.name",
+                "intersightdevnetpod2.host.name"
+            ],
+            "attributes": {
+                "intersightdevnetpod2.account.name": {
+                    "type": "string",
+                    "description": "Name of Intersight Account"
+                },
+                "intersightdevnetpod2.host.name": {
+                    "type": "string",
+                    "description": "UCS Domain Name"
+                }
+            }
+        },
+        "metricTypes": [
+            "intersightdevnetpod2:intersightdevnetpod2.ucs.network.utilization.average",
+            "intersightdevnetpod2:intersightdevnetpod2.ucs.network.transmit.rate",
+            "intersightdevnetpod2:intersightdevnetpod2.ucs.network.receive.rate"
+        ]
+    }
+]

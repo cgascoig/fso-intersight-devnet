@@ -1,0 +1,77 @@
+{
+    "manifestVersion": "1.0.0",
+    "name": "intersightdevnetpod05",
+    "solutionVersion": "0.1.71",
+    "dependencies": [
+        "dashui",
+        "fmm",
+        "k8s",
+        "zodiac",
+        "codex",
+        "healthrule",
+        "iam"
+    ],
+    "description": "Intersight monitoring (for Cisco Live Melbourne DevNet Workshop)",
+    "contact": "cgascoig@cisco.com",
+    "homepage": "https://github.com/cgascoig/fso-intersight-devnet",
+    "gitRepoUrl": "https://github.com/cgascoig/fso-intersight-devnet",
+    "readme": "https://github.com/cgascoig/fso-intersight-devnet",
+    "objects": [
+        {
+            "type": "fmm:namespace",
+            "objectsFile": "fmm/objects/namespace.json"
+        },
+        {
+            "type": "fmm:entity",
+            "objectsFile": "fmm/objects/entity-types.json"
+        },
+        {
+            "type": "fmm:metric",
+            "objectsFile": "fmm/objects/metric-types.json"
+        },
+        {
+            "type": "fmm:resourceMapping",
+            "objectsFile": "fmm/objects/resource-mappings.json"
+        },
+        {
+            "type": "fmm:entityPriority",
+            "objectsFile": "fmm/objects/entity-priority.json"
+        },
+        {
+            "type": "dashui:templatePropsExtension",
+            "objectsDir": "objects/dashui/templatePropsExtensions"
+        },
+        {
+            "type": "dashui:template",
+            "objectsDir": "objects/dashui/templates/account"
+        },
+        {
+            "type": "dashui:template",
+            "objectsDir": "objects/dashui/templates/dashboards"
+        },
+        {
+            "type": "dashui:navPresentation",
+            "objectsDir": "objects/dashui/navPresentations"
+        },
+        {
+            "type": "dashui:template",
+            "objectsDir": "objects/dashui/templates/hyperflex_cluster"
+        },
+        {
+            "type": "fmm:associationDeclaration",
+            "objectsDir": "objects/model/association-declarations"
+        },
+        {
+            "type": "fmm:associationDerivation",
+            "objectsFile": "objects/model/associationDerivations.json"
+        },
+        {
+            "type": "dashui:template",
+            "objectsDir": "objects/dashui/templates/ucs_domain"
+        },
+        {
+            "type": "dashui:template",
+            "objectsDir": "objects/dashui/templates/shared"
+        }
+    ]
+}

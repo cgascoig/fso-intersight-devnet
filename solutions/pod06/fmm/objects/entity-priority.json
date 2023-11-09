@@ -1,0 +1,16 @@
+{
+    "namespace": {
+        "name": "intersightdevnetpod06",
+        "version": 1
+    },
+    "kind": "entityPriority",
+    "name": "intersightdevnetpod06_entity_priorities",
+    "displayName": "Intersight Entity Priorities",
+    "description": "Intersight Entity Priorities",
+    "scopeFilter": "true",
+    "entityPriorities": {
+        "intersightdevnetpod06:hyperflex_cluster": 10,
+        "intersightdevnetpod06:ucs_domain": 11,
+        "intersightdevnetpod06:account": 100
+    }
+}

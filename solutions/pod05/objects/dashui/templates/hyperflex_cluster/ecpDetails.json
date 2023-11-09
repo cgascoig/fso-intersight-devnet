@@ -1,0 +1,15 @@
+{
+    "kind": "template",
+    "name": "dashui:ecpDetails",
+    "target": "intersightdevnetpod05:hyperflex_cluster",
+    "view": "default",
+    "element": {
+        "instanceOf": "ocpSingle",
+        "elements": [
+            {
+                "instanceOf": "intersightdevnetpod05:hyperflex_clusterDetailsList"
+            }
+        ],
+        "nameAttribute": "intersightdevnetpod05.hyperflex.device.id"
+    }
+}

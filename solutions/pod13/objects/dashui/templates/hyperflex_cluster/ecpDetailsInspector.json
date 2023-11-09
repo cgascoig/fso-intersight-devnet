@@ -1,0 +1,19 @@
+{
+    "kind": "template",
+    "name": "dashui:ecpDetailsInspector",
+    "target": "intersightdevnetpod13:hyperflex_cluster",
+    "view": "default",
+    "element": {
+        "instanceOf": "elements",
+        "elements": [
+            {
+                "instanceOf": {
+                    "name": "alerting"
+                }
+            },
+            {
+                "instanceOf": "intersightdevnetpod13:hyperflex_clusterInspectorWidget"
+            }
+        ]
+    }
+}

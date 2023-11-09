@@ -1,0 +1,49 @@
+[
+    {
+        "namespace": {
+            "name": "intersightdevnetpod09",
+            "version": 1
+        },
+        "kind": "resourceMapping",
+        "name": "intersightdevnetpod09_account_entity_mapping",
+        "displayName": "Intersight Account Entity Mapping",
+        "description": "Intersight Account Entity Mapping",
+        "scopeFilter": "containsAll(resourceAttributes, ['intersightdevnetpod09.account.name', 'intersightdevnetpod09.fsotype']) && 'account'.equals(getValue(resourceAttributes, 'intersightdevnetpod09.fsotype'))",
+        "entityType": "intersightdevnetpod09:account",
+        "attributeNameMappings": {
+            "intersightdevnetpod09.account.name": "intersightdevnetpod09.account.name"
+        }
+    },
+    {
+        "namespace": {
+            "name": "intersightdevnetpod09",
+            "version": 1
+        },
+        "kind": "resourceMapping",
+        "name": "intersightdevnetpod09_hyperflex_entity_mapping",
+        "displayName": "Intersight Hyperflex Entity Mapping",
+        "description": "Intersight Hyperflex Entity Mapping",
+        "scopeFilter": "containsAll(resourceAttributes, ['intersightdevnetpod09.account.name', 'intersightdevnetpod09.hyperflex.device.id', 'intersightdevnetpod09.fsotype']) && 'hyperflex_cluster'.equals(getValue(resourceAttributes, 'intersightdevnetpod09.fsotype'))",
+        "entityType": "intersightdevnetpod09:hyperflex_cluster",
+        "attributeNameMappings": {
+            "intersightdevnetpod09.account.name": "intersightdevnetpod09.account.name",
+            "intersightdevnetpod09.hyperflex.device.id": "intersightdevnetpod09.hyperflex.device.id"
+        }
+    },
+    {
+        "namespace": {
+            "name": "intersightdevnetpod09",
+            "version": 1
+        },
+        "kind": "resourceMapping",
+        "name": "intersightdevnetpod09_ucs_domain_entity_mapping",
+        "displayName": "Intersight UCS Domain Entity Mapping",
+        "description": "Intersight UCS Domain Entity Mapping",
+        "scopeFilter": "containsAll(resourceAttributes, ['intersightdevnetpod09.account.name', 'intersightdevnetpod09.host.name', 'intersightdevnetpod09.fsotype']) && 'ucs_domain'.equals(getValue(resourceAttributes, 'intersightdevnetpod09.fsotype'))",
+        "entityType": "intersightdevnetpod09:ucs_domain",
+        "attributeNameMappings": {
+            "intersightdevnetpod09.account.name": "intersightdevnetpod09.account.name",
+            "intersightdevnetpod09.host.name": "intersightdevnetpod09.host.name"
+        }
+    }
+]

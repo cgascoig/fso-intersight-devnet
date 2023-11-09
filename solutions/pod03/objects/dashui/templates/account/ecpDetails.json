@@ -1,0 +1,15 @@
+{
+    "kind": "template",
+    "name": "dashui:ecpDetails",
+    "target": "intersightdevnetpod03:account",
+    "view": "default",
+    "element": {
+        "instanceOf": "ocpSingle",
+        "elements": [
+            {
+                "instanceOf": "intersightdevnetpod03:accountDetailsList"
+            }
+        ],
+        "nameAttribute": "intersightdevnetpod03.account.name"
+    }
+}

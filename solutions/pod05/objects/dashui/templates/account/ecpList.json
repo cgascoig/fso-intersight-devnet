@@ -1,0 +1,24 @@
+{
+    "kind": "template",
+    "name": "dashui:ecpList",
+    "target": "intersightdevnetpod05:account",
+    "view": "default",
+    "element": {
+        "instanceOf": "ocpList",
+        "elements": {
+            "instanceOf": "card",
+            "props": {
+                "style": {
+                    "height": "calc(100% - 298px)",
+                    "padding": 0,
+                    "width": "100%"
+                }
+            },
+            "elements": [
+                {
+                    "instanceOf": "intersightdevnetpod05:accountGridTable"
+                }
+            ]
+        }
+    }
+}

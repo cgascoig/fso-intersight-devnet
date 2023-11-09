@@ -1,0 +1,296 @@
+{
+    "kind": "template",
+    "name": "intersightdevnetpod12:hyperflex_clusterInspectorWidget",
+    "target": "intersightdevnetpod12:hyperflex_cluster",
+    "view": "default",
+    "element": {
+        "instanceOf": "elements",
+        "elements": [
+            {
+                "instanceOf": {
+                    "name": "inspectorWidget"
+                },
+                "elements": {
+                    "instanceOf": {
+                        "name": "properties"
+                    },
+                    "elements": [
+                        {
+                            "label": {
+                                "instanceOf": "text",
+                                "content": "intersightdevnetpod12.account.name"
+                            },
+                            "value": {
+                                "instanceOf": "string",
+                                "path": "attributes(intersightdevnetpod12.account.name)"
+                            }
+                        },
+                        {
+                            "label": {
+                                "instanceOf": "text",
+                                "content": "intersightdevnetpod12.hyperflex.device.id"
+                            },
+                            "value": {
+                                "instanceOf": "string",
+                                "path": "attributes(intersightdevnetpod12.hyperflex.device.id)"
+                            }
+                        }
+                    ]
+                },
+                "title": "Properties"
+            },
+            {
+                "elements": [
+                    {
+                        "additionalInformation": {
+                            "branches": [
+                                {
+                                    "elements": {
+                                        "instanceOf": "empty"
+                                    },
+                                    "value": null
+                                }
+                            ],
+                            "defaultElements": {
+                                "elements": [
+                                    {
+                                        "emptyContent": "0",
+                                        "instanceOf": "number",
+                                        "path": "metrics(intersightdevnetpod12:intersightdevnetpod12.hyperflex.read.iops, \"intersight-otel\").value"
+                                    },
+                                    {
+                                        "content": " IOPs",
+                                        "instanceOf": "text"
+                                    }
+                                ],
+                                "instanceOf": "elements"
+                            },
+                            "path": "metrics(intersightdevnetpod12:intersightdevnetpod12.hyperflex.read.iops, \"intersight-otel\").value"
+                        },
+                        "graph": {
+                            "path": "intersightdevnetpod12:intersightdevnetpod12.hyperflex.read.iops",
+                            "source": "intersight-otel"
+                        },
+                        "headline": "HX Read IOPs",
+                        "instanceOf": {
+                            "name": "intersightdevnetpod12:sparkgraph"
+                        }
+                    }
+                ],
+                "instanceOf": {
+                    "name": "inspectorWidget"
+                }
+            },
+            {
+                "elements": [
+                    {
+                        "additionalInformation": {
+                            "branches": [
+                                {
+                                    "elements": {
+                                        "instanceOf": "empty"
+                                    },
+                                    "value": null
+                                }
+                            ],
+                            "defaultElements": {
+                                "elements": [
+                                    {
+                                        "emptyContent": "0",
+                                        "instanceOf": "number",
+                                        "path": "metrics(intersightdevnetpod12:intersightdevnetpod12.hyperflex.write.iops, \"intersight-otel\").value"
+                                    },
+                                    {
+                                        "content": " IOPs",
+                                        "instanceOf": "text"
+                                    }
+                                ],
+                                "instanceOf": "elements"
+                            },
+                            "path": "metrics(intersightdevnetpod12:intersightdevnetpod12.hyperflex.write.iops, \"intersight-otel\").value"
+                        },
+                        "graph": {
+                            "path": "intersightdevnetpod12:intersightdevnetpod12.hyperflex.write.iops",
+                            "source": "intersight-otel"
+                        },
+                        "headline": "HX Write IOPs",
+                        "instanceOf": {
+                            "name": "intersightdevnetpod12:sparkgraph"
+                        }
+                    }
+                ],
+                "instanceOf": {
+                    "name": "inspectorWidget"
+                }
+            },
+            {
+                "elements": [
+                    {
+                        "additionalInformation": {
+                            "branches": [
+                                {
+                                    "elements": {
+                                        "instanceOf": "empty"
+                                    },
+                                    "value": null
+                                }
+                            ],
+                            "defaultElements": {
+                                "elements": [
+                                    {
+                                        "emptyContent": "0",
+                                        "instanceOf": "number",
+                                        "path": "metrics(intersightdevnetpod12:intersightdevnetpod12.hyperflex.read.latency, \"intersight-otel\").value"
+                                    },
+                                    {
+                                        "content": " ms",
+                                        "instanceOf": "text"
+                                    }
+                                ],
+                                "instanceOf": "elements"
+                            },
+                            "path": "metrics(intersightdevnetpod12:intersightdevnetpod12.hyperflex.read.latency, \"intersight-otel\").value"
+                        },
+                        "graph": {
+                            "path": "intersightdevnetpod12:intersightdevnetpod12.hyperflex.read.latency",
+                            "source": "intersight-otel"
+                        },
+                        "headline": "HX Read Latency",
+                        "instanceOf": {
+                            "name": "intersightdevnetpod12:sparkgraph"
+                        }
+                    }
+                ],
+                "instanceOf": {
+                    "name": "inspectorWidget"
+                }
+            },
+            {
+                "elements": [
+                    {
+                        "additionalInformation": {
+                            "branches": [
+                                {
+                                    "elements": {
+                                        "instanceOf": "empty"
+                                    },
+                                    "value": null
+                                }
+                            ],
+                            "defaultElements": {
+                                "elements": [
+                                    {
+                                        "emptyContent": "0",
+                                        "instanceOf": "number",
+                                        "path": "metrics(intersightdevnetpod12:intersightdevnetpod12.hyperflex.write.latency, \"intersight-otel\").value"
+                                    },
+                                    {
+                                        "content": " ms",
+                                        "instanceOf": "text"
+                                    }
+                                ],
+                                "instanceOf": "elements"
+                            },
+                            "path": "metrics(intersightdevnetpod12:intersightdevnetpod12.hyperflex.write.latency, \"intersight-otel\").value"
+                        },
+                        "graph": {
+                            "path": "intersightdevnetpod12:intersightdevnetpod12.hyperflex.write.latency",
+                            "source": "intersight-otel"
+                        },
+                        "headline": "HX Write Latency",
+                        "instanceOf": {
+                            "name": "intersightdevnetpod12:sparkgraph"
+                        }
+                    }
+                ],
+                "instanceOf": {
+                    "name": "inspectorWidget"
+                }
+            },
+            {
+                "elements": [
+                    {
+                        "additionalInformation": {
+                            "branches": [
+                                {
+                                    "elements": {
+                                        "instanceOf": "empty"
+                                    },
+                                    "value": null
+                                }
+                            ],
+                            "defaultElements": {
+                                "elements": [
+                                    {
+                                        "emptyContent": "0",
+                                        "instanceOf": "number",
+                                        "path": "metrics(intersightdevnetpod12:intersightdevnetpod12.hyperflex.read.throughput, \"intersight-otel\").value"
+                                    },
+                                    {
+                                        "content": " bytes/sec",
+                                        "instanceOf": "text"
+                                    }
+                                ],
+                                "instanceOf": "elements"
+                            },
+                            "path": "metrics(intersightdevnetpod12:intersightdevnetpod12.hyperflex.read.throughput, \"intersight-otel\").value"
+                        },
+                        "graph": {
+                            "path": "intersightdevnetpod12:intersightdevnetpod12.hyperflex.read.throughput",
+                            "source": "intersight-otel"
+                        },
+                        "headline": "HX Read Throughput",
+                        "instanceOf": {
+                            "name": "intersightdevnetpod12:sparkgraph"
+                        }
+                    }
+                ],
+                "instanceOf": {
+                    "name": "inspectorWidget"
+                }
+            },
+            {
+                "elements": [
+                    {
+                        "additionalInformation": {
+                            "branches": [
+                                {
+                                    "elements": {
+                                        "instanceOf": "empty"
+                                    },
+                                    "value": null
+                                }
+                            ],
+                            "defaultElements": {
+                                "elements": [
+                                    {
+                                        "emptyContent": "0",
+                                        "instanceOf": "number",
+                                        "path": "metrics(intersightdevnetpod12:intersightdevnetpod12.hyperflex.write.throughput, \"intersight-otel\").value"
+                                    },
+                                    {
+                                        "content": " bytes/sec",
+                                        "instanceOf": "text"
+                                    }
+                                ],
+                                "instanceOf": "elements"
+                            },
+                            "path": "metrics(intersightdevnetpod12:intersightdevnetpod12.hyperflex.write.throughput, \"intersight-otel\").value"
+                        },
+                        "graph": {
+                            "path": "intersightdevnetpod12:intersightdevnetpod12.hyperflex.write.throughput",
+                            "source": "intersight-otel"
+                        },
+                        "headline": "HX Write Throughput",
+                        "instanceOf": {
+                            "name": "intersightdevnetpod12:sparkgraph"
+                        }
+                    }
+                ],
+                "instanceOf": {
+                    "name": "inspectorWidget"
+                }
+            }
+        ]
+    }
+}

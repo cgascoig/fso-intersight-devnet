@@ -1,0 +1,132 @@
+{
+    "element": {
+        "elements": [
+            {
+                "elements": {
+                    "@data": {
+                        "spacecraft": {
+                            "from": [
+                                "default",
+                                {
+                                    "query": "FETCH current_count: metrics(intersightdevnetpod04:intersightdevnetpod04.vm_count).value FROM entities(intersightdevnetpod04:account)",
+                                    "type": "uqe",
+                                    "useTimeRange": true
+                                },
+                                {
+                                    "expr": "rows",
+                                    "type": "expr"
+                                }
+                            ],
+                            "select": {
+                                "CurrentCount": {
+                                    "expr": "($.current_count ? $.current_count : 0)",
+                                    "type": "expr"
+                                }
+                            }
+                        }
+                    },
+                    "@type": "html.div",
+                    "children": [
+                        {
+                            "@type": "html.div",
+                            "children": [
+                                {
+                                    "@type": "html.div",
+                                    "children": [
+                                        {
+                                            "@type": "html.span",
+                                            "children": "CURRENT COUNT1",
+                                            "className": {
+                                                "fontSize": "1vw",
+                                                "lineHeight": "19px"
+                                            }
+                                        },
+                                        {
+                                            "$children": "$data.spacecraft.CurrentCount[0]",
+                                            "@type": "html.span",
+                                            "className": {
+                                                "display": "block",
+                                                "fontSize": "22px",
+                                                "fontWeight": 500,
+                                                "lineHeight": "20px"
+                                            }
+                                        }
+                                    ],
+                                    "className": {
+                                        "backgroundColor": "#4b385c",
+                                        "color": "#ffffff",
+                                        "padding": 10,
+                                        "width": "110px"
+                                    }
+                                }
+                            ],
+                            "className": {
+                                "display": "inline-grid",
+                                "padding": 10
+                            }
+                        },
+                        {
+                            "@type": "html.div",
+                            "children": [
+                                {
+                                    "$xAxis": "{'format': {'twentyFourHour': true}, 'type': 'datetime', 'min': $data.points.startTimestamp[0], 'max': $data.points.endTimestamp[0]}",
+                                    "@data": {
+                                        "points": {
+                                            "from": [
+                                                "default",
+                                                {
+                                                    "query": "FETCH torpedo_count: metrics(intersightdevnetpod04:intersightdevnetpod04.vm_count) FROM entities(intersightdevnetpod04:account)",
+                                                    "type": "uqe"
+                                                }
+                                            ],
+                                            "select": {
+                                                "endTimestamp": {
+                                                    "expr": "$toMillis(metadata.until)",
+                                                    "type": "expr"
+                                                },
+                                                "startTimestamp": {
+                                                    "expr": "$toMillis(metadata.since)",
+                                                    "type": "expr"
+                                                },
+                                                "torpedoCount": {
+                                                    "expr": "rows.torpedo_count.rows.{ 'x': $toMillis(timestamp), 'y': value }",
+                                                    "type": "expr"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "@type": "uik.Cartesian",
+                                    "children": [
+                                        {
+                                            "$data": "$data.points.torpedoCount",
+                                            "@type": "uik.Cartesian.Line",
+                                            "name": "Trip Count"
+                                        }
+                                    ],
+                                    "colors": [
+                                        "#4b385c"
+                                    ]
+                                }
+                            ],
+                            "className": {
+                                "display": "inline-grid",
+                                "height": 1000,
+                                "width": "35vw"
+                            }
+                        }
+                    ],
+                    "className": {
+                        "display": "flex",
+                        "flexWrap": "nowrap"
+                    }
+                },
+                "instanceOf": "v1plus"
+            }
+        ],
+        "instanceOf": "card"
+    },
+    "kind": "template",
+    "name": "intersightdevnetpod04:vmOverviewDashboardWidget",
+    "target": "*",
+    "view": "default"
+}

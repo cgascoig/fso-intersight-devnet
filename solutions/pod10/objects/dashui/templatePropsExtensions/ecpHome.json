@@ -1,0 +1,41 @@
+{
+    "kind": "templatePropsExtension",
+    "id": "intersightdevnetpod10:intersightdevnetpod10EcpHomeExtension",
+    "name": "dashui:ecpHome",
+    "view": "default",
+    "target": "*",
+    "requiredEntityTypes": [
+        "intersightdevnetpod10:account",
+        "intersightdevnetpod10:hyperflex_cluster",
+        "intersightdevnetpod10:ucs_domain"
+    ],
+    "props": {
+        "sections": [
+            {
+                "index": 6,
+                "name": "intersightdevnetpod10CoreSection",
+                "title": "Intersight"
+            }
+        ],
+        "entities": [
+            {
+                "index": 0,
+                "section": "intersightdevnetpod10CoreSection",
+                "entityAttribute": "intersightdevnetpod10.account.name",
+                "targetType": "intersightdevnetpod10:account"
+            },
+            {
+                "index": 1,
+                "section": "intersightdevnetpod10CoreSection",
+                "entityAttribute": "intersightdevnetpod10.hyperflex.device.id",
+                "targetType": "intersightdevnetpod10:hyperflex_cluster"
+            },
+            {
+                "index": 2,
+                "section": "intersightdevnetpod10CoreSection",
+                "entityAttribute": "intersightdevnetpod10.host.name",
+                "targetType": "intersightdevnetpod10:ucs_domain"
+            }
+        ]
+    }
+}

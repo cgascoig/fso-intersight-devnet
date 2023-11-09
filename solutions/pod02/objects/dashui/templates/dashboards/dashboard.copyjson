@@ -1,0 +1,353 @@
+{
+    "element": {
+        "elements": [
+            {
+                "elements": {
+                    "@type": "template.breadcrumbs",
+                    "items": [
+                        [
+                            "Intersight Dashboard",
+                            "/templates/v1/intersightdevnetpod02:intersightDashboard?ctx.since=now+-1d"
+                        ]
+                    ]
+                },
+                "instanceOf": "v1plus"
+            },
+            {
+                "elements": [
+                    {
+                        "content": "Intersight Dashboard",
+                        "instanceOf": "text"
+                    }
+                ],
+                "instanceOf": "html",
+                "style": {
+                    "color": "orange",
+                    "fontSize": "38px",
+                    "fontWeight": "bold",
+                    "marginBottom": 15
+                }
+            },
+            {
+                "elements": [
+                    {
+                        "elements": [
+                            {
+                                "elements": [
+                                    {
+                                        "instanceOf": "clickable",
+                                        "onClick": {
+                                            "payload": {
+                                                "href": "/observe/spacefleet/spacecraft"
+                                            },
+                                            "type": "navigate.location"
+                                        },
+                                        "style": {
+                                            "color": "orange",
+                                            "fontSize": "28px",
+                                            "fontWeight": 700,
+                                            "lineHeight": "34px"
+                                        },
+                                        "trigger": {
+                                            "content": "Virtual Machines",
+                                            "instanceOf": "text"
+                                        }
+                                    }
+                                ],
+                                "instanceOf": "html",
+                                "style": {
+                                    "marginBottom": 6,
+                                    "marginTop": 10
+                                }
+                            },
+                            {
+                                "elements": [
+                                    {
+                                        "instanceOf": "cartesian",
+                                        "props": {
+                                            "style": {
+                                                "height": 250
+                                            }
+                                        },
+                                        "children": [
+                                            {
+                                                "props": {
+                                                    "name": "intersightdevnetpod02:intersightdevnetpod02.vm_count"
+                                                },
+                                                "metric": {
+                                                    "name": "intersightdevnetpod02:intersightdevnetpod02.vm_count",
+                                                    "y": {
+                                                        "type": "value"
+                                                    }
+                                                },
+                                                "type": "LINE"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "instanceOf": "html"
+                            }
+                        ],
+                        "instanceOf": "html"
+                    },
+                    {
+                        "elements": [
+                            {
+                                "elements": [
+                                    {
+                                        "instanceOf": "clickable",
+                                        "onClick": {
+                                            "payload": {
+                                                "href": "/observe/spacefleet/spacecraft"
+                                            },
+                                            "type": "navigate.location"
+                                        },
+                                        "style": {
+                                            "color": "orange",
+                                            "fontSize": "28px",
+                                            "fontWeight": 700,
+                                            "lineHeight": "34px"
+                                        },
+                                        "trigger": {
+                                            "content": "Spacecraft",
+                                            "instanceOf": "text"
+                                        }
+                                    }
+                                ],
+                                "instanceOf": "html",
+                                "style": {
+                                    "marginBottom": 6,
+                                    "marginTop": 10
+                                }
+                            },
+                            {
+                                "elements": [
+                                    {
+                                        "instanceOf": {
+                                            "name": "spacefleet:starshipOverviewDashboardWidget"
+                                        }
+                                    }
+                                ],
+                                "instanceOf": "html"
+                            }
+                        ],
+                        "instanceOf": "html"
+                    },
+                    {
+                        "elements": [
+                            {
+                                "elements": [
+                                    {
+                                        "instanceOf": "clickable",
+                                        "onClick": {
+                                            "payload": {
+                                                "href": "/observe/spacefleet/room"
+                                            },
+                                            "type": "navigate.location"
+                                        },
+                                        "style": {
+                                            "color": "orange",
+                                            "fontSize": "28px",
+                                            "fontWeight": 700,
+                                            "lineHeight": "34px"
+                                        },
+                                        "trigger": {
+                                            "content": "Rooms",
+                                            "instanceOf": "text"
+                                        }
+                                    }
+                                ],
+                                "instanceOf": "html",
+                                "style": {
+                                    "marginBottom": 6,
+                                    "marginTop": 10
+                                }
+                            },
+                            {
+                                "elements": [
+                                    {
+                                        "instanceOf": {
+                                            "name": "spacefleet:roomsOverviewDashboardWidget"
+                                        }
+                                    }
+                                ],
+                                "instanceOf": "html"
+                            }
+                        ],
+                        "instanceOf": "html"
+                    },
+                    {
+                        "elements": [
+                            {
+                                "elements": [
+                                    {
+                                        "instanceOf": "clickable",
+                                        "onClick": {
+                                            "payload": {
+                                                "href": "/observe/spacefleet/warp_drive"
+                                            },
+                                            "type": "navigate.location"
+                                        },
+                                        "style": {
+                                            "color": "orange",
+                                            "fontSize": "28px",
+                                            "fontWeight": 700,
+                                            "lineHeight": "34px"
+                                        },
+                                        "trigger": {
+                                            "content": "Warp Drive",
+                                            "instanceOf": "text"
+                                        }
+                                    }
+                                ],
+                                "instanceOf": "html",
+                                "style": {
+                                    "marginBottom": 6,
+                                    "marginTop": 10
+                                }
+                            },
+                            {
+                                "elements": [
+                                    {
+                                        "instanceOf": {
+                                            "name": "spacefleet:warpDriveOverviewDashboardWidget"
+                                        }
+                                    }
+                                ],
+                                "instanceOf": "html"
+                            }
+                        ],
+                        "instanceOf": "html"
+                    },
+                    {
+                        "elements": [
+                            {
+                                "elements": [
+                                    {
+                                        "instanceOf": "clickable",
+                                        "onClick": {
+                                            "payload": {
+                                                "href": "/observe/spacefleet/torpedo_tube"
+                                            },
+                                            "type": "navigate.location"
+                                        },
+                                        "style": {
+                                            "color": "orange",
+                                            "fontSize": "28px",
+                                            "fontWeight": 700,
+                                            "lineHeight": "34px"
+                                        },
+                                        "trigger": {
+                                            "content": "Torpedoes",
+                                            "instanceOf": "text"
+                                        }
+                                    }
+                                ],
+                                "instanceOf": "html",
+                                "style": {
+                                    "marginBottom": 6,
+                                    "marginTop": 10
+                                }
+                            },
+                            {
+                                "elements": [
+                                    {
+                                        "instanceOf": {
+                                            "name": "spacefleet:torpedoesOverviewDashboardWidget"
+                                        }
+                                    }
+                                ],
+                                "instanceOf": "html"
+                            },
+                            {
+                                "elements": [
+                                    {
+                                        "instanceOf": "clickable",
+                                        "onClick": {
+                                            "payload": {
+                                                "href": "/observe/spacefleet/shield"
+                                            },
+                                            "type": "navigate.location"
+                                        },
+                                        "style": {
+                                            "color": "orange",
+                                            "fontSize": "28px",
+                                            "fontWeight": 700,
+                                            "lineHeight": "34px"
+                                        },
+                                        "trigger": {
+                                            "content": "Shields",
+                                            "instanceOf": "text"
+                                        }
+                                    }
+                                ],
+                                "instanceOf": "html",
+                                "style": {
+                                    "marginBottom": 6,
+                                    "marginTop": 60
+                                }
+                            },
+                            {
+                                "elements": [
+                                    {
+                                        "instanceOf": {
+                                            "name": "spacefleet:shieldOverviewDashboardWidget"
+                                        }
+                                    }
+                                ],
+                                "instanceOf": "html"
+                            }
+                        ],
+                        "instanceOf": "html"
+                    }
+                ],
+                "instanceOf": "html",
+                "style": {
+                    "display": "grid",
+                    "gap": 16,
+                    "gridTemplateColumns": "50% 1fr"
+                }
+            },
+            {
+                "elements": [
+                    {
+                        "elements": [
+                            {
+                                "content": "Newsfeed",
+                                "instanceOf": "text"
+                            }
+                        ],
+                        "instanceOf": "html",
+                        "style": {
+                            "color": "orange",
+                            "fontSize": "28px",
+                            "fontWeight": 700,
+                            "lineHeight": "34px",
+                            "marginBottom": 6,
+                            "marginTop": 36
+                        }
+                    },
+                    {
+                        "elements": [
+                            {
+                                "instanceOf": {
+                                    "name": "spacefleet:newsfeedEventOverviewDashboardWidget"
+                                }
+                            }
+                        ],
+                        "instanceOf": "html"
+                    }
+                ],
+                "instanceOf": "html"
+            }
+        ],
+        "instanceOf": "html",
+        "style": {
+            "margin": 16
+        }
+    },
+    "kind": "template",
+    "name": "intersightdevnetpod02:intersightDashboard",
+    "target": "*",
+    "view": "default"
+}

@@ -1,0 +1,124 @@
+{
+    "kind": "template",
+    "name": "intersightdevnetpod07:ucs_domainGridTable",
+    "target": "intersightdevnetpod07:ucs_domain",
+    "view": "default",
+    "element": {
+        "instanceOf": "grid",
+        "rowSets": {
+            "default": {
+                "keyPath": "id"
+            }
+        },
+        "mode": "server",
+        "columns": [
+            {
+                "label": "Health",
+                "flex": 0,
+                "width": 80,
+                "cell": {
+                    "default": {
+                        "instanceOf": {
+                            "name": "health"
+                        }
+                    }
+                }
+            },
+            {
+                "label": "Account Name",
+                "flex": 0,
+                "width": 240,
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "truncate": true,
+                        "trigger": {
+                            "instanceOf": "clickable",
+                            "onClick": {
+                                "type": "navigate.entity.detail",
+                                "paths": [
+                                    "id"
+                                ],
+                                "expression": "$ ~> |$|{\"id\": $data[0]}|"
+                            },
+                            "trigger": {
+                                "instanceOf": "string",
+                                "path": [
+                                    "attributes(intersightdevnetpod07.account.name)",
+                                    "id"
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            {
+                "label": "UCS Domain Name",
+                "flex": 0,
+                "width": 240,
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "truncate": true,
+                        "trigger": {
+                            "instanceOf": "string",
+                            "path": [
+                                "attributes(intersightdevnetpod07.host.name)"
+                            ]
+                        }
+                    }
+                }
+            },
+            {
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "trigger": {
+                            "instanceOf": "number",
+                            "path": "metrics(\"intersightdevnetpod07:intersightdevnetpod07.ucs.network.utilization.average\", \"intersight-otel\").value"
+                        }
+                    }
+                },
+                "flex": 0,
+                "label": "Network Utilization",
+                "width": 150
+            },
+            {
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "trigger": {
+                            "instanceOf": "number",
+                            "path": "metrics(\"intersightdevnetpod07:intersightdevnetpod07.ucs.network.receive.rate\", \"intersight-otel\").value"
+                        }
+                    }
+                },
+                "flex": 0,
+                "label": "Network Receive Rate",
+                "width": 150
+            },
+            {
+                "cell": {
+                    "default": {
+                        "instanceOf": "tooltip",
+                        "trigger": {
+                            "instanceOf": "number",
+                            "path": "metrics(\"intersightdevnetpod07:intersightdevnetpod07.ucs.network.transmit.rate\", \"intersight-otel\").value"
+                        }
+                    }
+                },
+                "flex": 0,
+                "label": "Network Transmit Rate",
+                "width": 150
+            }
+        ],
+        "onRowSingleClick": {
+            "type": "common.focusEntity",
+            "expression": "{ \"id\": $params.key }"
+        },
+        "onRowDoubleClick": {
+            "type": "navigate.entity.detail",
+            "expression": "{ \"id\": $params.key }"
+        }
+    }
+}

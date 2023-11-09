@@ -1,0 +1,109 @@
+{
+    "kind": "template",
+    "name": "intersightdevnetpod15:ucs_domainDetailsList",
+    "target": "intersightdevnetpod15:ucs_domain",
+    "view": "default",
+    "element": {
+        "instanceOf": "html",
+        "elements": [
+            {
+                "instanceOf": "card",
+                "props": {
+                    "title": "UCS Domain Average Network Utilization"
+                },
+                "elements": [
+                    {
+                        "instanceOf": "cartesian",
+                        "props": {
+                            "style": {
+                                "height": 250
+                            }
+                        },
+                        "children": [
+                            {
+                                "props": {
+                                    "name": "intersightdevnetpod15:intersightdevnetpod15.ucs.network.utilization.average"
+                                },
+                                "metric": {
+                                    "name": "intersightdevnetpod15:intersightdevnetpod15.ucs.network.utilization.average",
+                                    "source": "intersight-otel",
+                                    "y": {
+                                        "type": "value"
+                                    }
+                                },
+                                "type": "LINE"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "instanceOf": "card",
+                "props": {
+                    "title": "UCS Domain Network Receive Rate"
+                },
+                "elements": [
+                    {
+                        "instanceOf": "cartesian",
+                        "props": {
+                            "style": {
+                                "height": 250
+                            }
+                        },
+                        "children": [
+                            {
+                                "props": {
+                                    "name": "intersightdevnetpod15:intersightdevnetpod15.ucs.network.receive.rate"
+                                },
+                                "metric": {
+                                    "name": "intersightdevnetpod15:intersightdevnetpod15.ucs.network.receive.rate",
+                                    "source": "intersight-otel",
+                                    "y": {
+                                        "type": "value"
+                                    }
+                                },
+                                "type": "LINE"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "instanceOf": "card",
+                "props": {
+                    "title": "UCS Domain Network Transmit Rate"
+                },
+                "elements": [
+                    {
+                        "instanceOf": "cartesian",
+                        "props": {
+                            "style": {
+                                "height": 250
+                            }
+                        },
+                        "children": [
+                            {
+                                "props": {
+                                    "name": "intersightdevnetpod15:intersightdevnetpod15.ucs.network.transmit.rate"
+                                },
+                                "metric": {
+                                    "name": "intersightdevnetpod15:intersightdevnetpod15.ucs.network.transmit.rate",
+                                    "source": "intersight-otel",
+                                    "y": {
+                                        "type": "value"
+                                    }
+                                },
+                                "type": "LINE"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "style": {
+            "display": "flex",
+            "flexDirection": "column",
+            "gap": 12
+        }
+    }
+}

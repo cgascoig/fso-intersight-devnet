@@ -1,0 +1,23 @@
+{
+    "kind": "template",
+    "name": "dashui:ecpRelationshipMap",
+    "target": "intersightdevnetpod09:ucs_domain",
+    "view": "default",
+    "element": {
+        "instanceOf": "leftbar",
+        "elements": [
+            {
+                "key": "ucs_domain",
+                "path": ".",
+                "entityAttribute": "intersightdevnetpod09.host.name",
+                "iconName": "AgentType.Appd"
+            },
+            {
+                "key": "account",
+                "path": "in(common:consists_of).from(intersightdevnetpod09:account)",
+                "entityAttribute": "intersightdevnetpod09.account.name",
+                "iconName": "AgentType.Appd"
+            }
+        ]
+    }
+}

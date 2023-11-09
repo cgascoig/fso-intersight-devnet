@@ -1,0 +1,15 @@
+{
+    "kind": "template",
+    "name": "dashui:ecpDetails",
+    "target": "intersightdevnetpod1:ucs_domain",
+    "view": "default",
+    "element": {
+        "instanceOf": "ocpSingle",
+        "elements": [
+            {
+                "instanceOf": "intersightdevnetpod1:ucs_domainDetailsList"
+            }
+        ],
+        "nameAttribute": "intersightdevnetpod1.host.name"
+    }
+}

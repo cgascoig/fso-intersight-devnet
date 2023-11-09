@@ -1,0 +1,196 @@
+{
+    "kind": "template",
+    "name": "intersightdevnetpod11:hyperflex_clusterDetailsList",
+    "target": "intersightdevnetpod11:hyperflex_cluster",
+    "view": "default",
+    "element": {
+        "instanceOf": "html",
+        "elements": [
+            {
+                "instanceOf": "card",
+                "props": {
+                    "title": "Hyperflex Read IOPs"
+                },
+                "elements": [
+                    {
+                        "instanceOf": "cartesian",
+                        "props": {
+                            "style": {
+                                "height": 250
+                            }
+                        },
+                        "children": [
+                            {
+                                "props": {
+                                    "name": "intersightdevnetpod11:intersightdevnetpod11.hyperflex.read.iops"
+                                },
+                                "metric": {
+                                    "name": "intersightdevnetpod11:intersightdevnetpod11.hyperflex.read.iops",
+                                    "y": {
+                                        "type": "value"
+                                    }
+                                },
+                                "type": "LINE"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "instanceOf": "card",
+                "props": {
+                    "title": "Hyperflex Write IOPs"
+                },
+                "elements": [
+                    {
+                        "instanceOf": "cartesian",
+                        "props": {
+                            "style": {
+                                "height": 250
+                            }
+                        },
+                        "children": [
+                            {
+                                "props": {
+                                    "name": "intersightdevnetpod11:intersightdevnetpod11.hyperflex.write.iops"
+                                },
+                                "metric": {
+                                    "name": "intersightdevnetpod11:intersightdevnetpod11.hyperflex.write.iops",
+                                    "y": {
+                                        "type": "value"
+                                    }
+                                },
+                                "type": "LINE"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "instanceOf": "card",
+                "props": {
+                    "title": "Hyperflex Read Throughput"
+                },
+                "elements": [
+                    {
+                        "instanceOf": "cartesian",
+                        "props": {
+                            "style": {
+                                "height": 250
+                            }
+                        },
+                        "children": [
+                            {
+                                "props": {
+                                    "name": "intersightdevnetpod11:intersightdevnetpod11.hyperflex.read.throughput"
+                                },
+                                "metric": {
+                                    "name": "intersightdevnetpod11:intersightdevnetpod11.hyperflex.read.throughput",
+                                    "y": {
+                                        "type": "value"
+                                    }
+                                },
+                                "type": "LINE"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "instanceOf": "card",
+                "props": {
+                    "title": "Hyperflex Write Throughput"
+                },
+                "elements": [
+                    {
+                        "instanceOf": "cartesian",
+                        "props": {
+                            "style": {
+                                "height": 250
+                            }
+                        },
+                        "children": [
+                            {
+                                "props": {
+                                    "name": "intersightdevnetpod11:intersightdevnetpod11.hyperflex.write.throughput"
+                                },
+                                "metric": {
+                                    "name": "intersightdevnetpod11:intersightdevnetpod11.hyperflex.write.throughput",
+                                    "y": {
+                                        "type": "value"
+                                    }
+                                },
+                                "type": "LINE"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "instanceOf": "card",
+                "props": {
+                    "title": "Hyperflex Read Latency"
+                },
+                "elements": [
+                    {
+                        "instanceOf": "cartesian",
+                        "props": {
+                            "style": {
+                                "height": 250
+                            }
+                        },
+                        "children": [
+                            {
+                                "props": {
+                                    "name": "intersightdevnetpod11:intersightdevnetpod11.hyperflex.read.latency"
+                                },
+                                "metric": {
+                                    "name": "intersightdevnetpod11:intersightdevnetpod11.hyperflex.read.latency",
+                                    "y": {
+                                        "type": "value"
+                                    }
+                                },
+                                "type": "LINE"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "instanceOf": "card",
+                "props": {
+                    "title": "Hyperflex Write Latency"
+                },
+                "elements": [
+                    {
+                        "instanceOf": "cartesian",
+                        "props": {
+                            "style": {
+                                "height": 250
+                            }
+                        },
+                        "children": [
+                            {
+                                "props": {
+                                    "name": "intersightdevnetpod11:intersightdevnetpod11.hyperflex.write.latency"
+                                },
+                                "metric": {
+                                    "name": "intersightdevnetpod11:intersightdevnetpod11.hyperflex.write.latency",
+                                    "y": {
+                                        "type": "value"
+                                    }
+                                },
+                                "type": "LINE"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "style": {
+            "display": "flex",
+            "flexDirection": "column",
+            "gap": 12
+        }
+    }
+}
