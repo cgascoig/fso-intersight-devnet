@@ -25,6 +25,7 @@ all::
 
 define make-pod-target =
 solutions/$1/manifest.json: $(GLOBAL_FILES) $(SOLUTION_TEMPLATE_FILES)
+	rm -Rf $$(@D)
 	mkdir -p $$(@D)
 	for f in $$$$(cd solution-template; find . -type f); do d=$$$$(dirname $$$${f}); mkdir -p "solutions/$1/$$$${d}"; sed -e 's/intersightdevnet/intersightdevnet$1/g' "solution-template/$$$${f}" > "solutions/$1/$$$${f}"; done
 

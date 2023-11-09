@@ -50,10 +50,6 @@
             "objectsDir": "objects/dashui/templates/dashboards"
         },
         {
-            "type": "dashui:navPresentation",
-            "objectsDir": "objects/dashui/navPresentations"
-        },
-        {
             "type": "dashui:template",
             "objectsDir": "objects/dashui/templates/hyperflex_cluster"
         },
