@@ -1,0 +1,175 @@
+# this deployment will create a pod with both the intersight-otel collector and the opentelemetry-collector containers
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: intersight-otel
+spec:
+  selector:
+    matchLabels:
+      app: intersight-otel
+  template:
+    metadata:
+      labels:
+        app: intersight-otel
+        component: otel-collector
+      annotations:
+        eks.amazonaws.com/compute-type: fargate
+    spec:
+      tolerations:
+        - key: eks.amazonaws.com/compute-type
+          value: fargate
+          operator: Equal
+          effect: NoSchedule
+      containers:
+        - name: intersight-otel
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - all
+            privileged: false
+            readOnlyRootFilesystem: true
+          image: ghcr.io/cgascoig/intersight-otel:v0.1.1-alpha01
+          command:
+            - "sh"
+            - "-c"
+            - "sleep 10 && /target/release/intersight_otel -c /etc/intersight-otel/intersight-otel.toml"
+          env:
+            - name: RUST_LOG
+              value: "info"
+            - name: intersight_otel_key_file
+              value: /etc/intersight-otel-key/intersight.pem
+            - name: intersight_otel_key_id
+              valueFrom:
+                secretKeyRef:
+                  name: intersight-api-credentials
+                  key: intersight-key-id
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+          volumeMounts:
+            - name: intersight-otel-config
+              mountPath: /etc/intersight-otel
+              readOnly: true
+            - name: intersight-otel-key
+              mountPath: /etc/intersight-otel-key
+              readOnly: true
+        - command:
+            - "/otelcol-contrib" #"/otelcol"
+            - "--config=/conf/otel-collector-config.yaml"
+          image: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.85.0
+          name: otel-collector
+          resources:
+            limits:
+              cpu: 1
+              memory: 2Gi
+            requests:
+              cpu: 200m
+              memory: 400Mi
+          ports:
+            - containerPort: 55679 # Default endpoint for ZPages.
+            - containerPort: 4317 # Default endpoint for OpenTelemetry receiver.
+            - containerPort: 14250 # Default endpoint for Jaeger gRPC receiver.
+            - containerPort: 14268 # Default endpoint for Jaeger HTTP receiver.
+            - containerPort: 9411 # Default endpoint for Zipkin receiver.
+            - containerPort: 8888 # Default endpoint for querying metrics.
+            - containerPort: 2112 # Prometheus exporter
+          volumeMounts:
+            - name: otel-collector-config-vol
+              mountPath: /conf
+      volumes:
+        - name: intersight-otel-config
+          configMap:
+            name: intersight-otel-config
+        - name: intersight-otel-key
+          secret:
+            secretName: intersight-api-credentials
+            items:
+              - key: intersight-key
+                path: intersight.pem
+        - configMap:
+            name: otel-collector-config
+            items:
+              - key: otel-collector-config
+                path: otel-collector-config.yaml
+          name: otel-collector-config-vol
+---
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: intersight-otel-config
+# data:
+#   intersight-otel.toml: |
+#     otel_collector_endpoint = "http://127.0.0.1:4317"
+
+#     [[pollers]]
+#     name = "intersightdevnetpod13.vm_count"
+#     otel_attributes = { "intersightdevnetpod13.account.name" = "my_intersight_account", "intersightdevnetpod13.fsotype" = "account" }
+#     api_query = "api/v1/virtualization/VirtualMachines?$count=true"
+#     aggregator = "result_count"
+#     interval = 60
+
+#     [[tspollers]]
+#     name = "hx_performance"
+#     datasource = "hx"
+#     dimensions = ["deviceId"]
+#     filter = { type = "and", fields = [{type = "selector", dimension = "node", value = "allhosts"},{type = "selector", dimension = "datastore", value = "cluster"}]}
+#     aggregations = [{name = "read_ops_per_min", type = "longSum", fieldName = "sumReadOps"}, {name = "write_ops_per_min", type = "longSum",fieldName = "sumWriteOps"}, {name = "read_tp_bytes_per_min", type = "longSum", fieldName = "sumReadBytes"},{name = "write_tp_bytes_per_min", type = "longSum", fieldName = "sumWriteBytes"},{name = "sum_read_latency",type = "longSum", fieldName = "sumReadLatency"},{name = "sum_write_latency",type = "longSum", fieldName = "sumWriteLatency"}]
+#     post_aggregations = [{type = "arithmetic",name = "intersightdevnetpod13.hyperflex.read.iops",fn = "/",fields = [{type = "fieldAccess",name = "read_ops_per_min",fieldName = "read_ops_per_min"},{type = "constant",name = "const",value = 300}]}, {type = "arithmetic",name = "intersightdevnetpod13.hyperflex.write.iops",fn = "/",fields = [{type = "fieldAccess",name = "write_ops_per_min",fieldName = "write_ops_per_min"},{type = "constant",name = "const",value = 300}]},{type = "arithmetic", name = "intersightdevnetpod13.hyperflex.read.throughput", fn = "/", fields = [{type = "fieldAccess", name = "read_tp_bytes_per_min", fieldName = "read_tp_bytes_per_min"},{type = "constant", name = "const", value = 300}]},{type = "arithmetic", name = "intersightdevnetpod13.hyperflex.write.throughput", fn = "/", fields = [{type = "fieldAccess", name = "write_tp_bytes_per_min", fieldName = "write_tp_bytes_per_min"},{type = "constant", name = "const", value = 300}]},{type = "arithmetic", name = "intersightdevnetpod13.hyperflex.read.latency", fn = "/", fields = [{type = "fieldAccess", name = "sum_read_latency", fieldName = "sum_read_latency"},{type = "fieldAccess",name = "read_ops_per_min", fieldName = "read_ops_per_min"}]},{type = "arithmetic", name = "intersightdevnetpod13.hyperflex.write.latency", fn = "/", fields = [{type = "fieldAccess", name = "sum_write_latency",fieldName = "sum_write_latency"},{type = "fieldAccess", name = "write_ops_per_min", fieldName = "write_ops_per_min"}]}]
+#     field_names = ["intersightdevnetpod13.hyperflex.read.iops", "intersightdevnetpod13.hyperflex.write.iops", "intersightdevnetpod13.hyperflex.read.throughput", "intersightdevnetpod13.hyperflex.write.throughput", "intersightdevnetpod13.hyperflex.read.latency", "intersightdevnetpod13.hyperflex.write.latency"]
+#     otel_dimension_to_attribute_map = { deviceId = "intersightdevnetpod13.hyperflex.device.id" }
+#     otel_attributes = { "intersightdevnetpod13.account.name" = "my_intersight_account", "intersightdevnetpod13.fsotype" = "hyperflex_cluster"}
+#     interval = 60
+
+#     [[tspollers]]
+#     name = "ucs_network_utilization"
+#     datasource = "NetworkInterfaces"
+#     dimensions = ["host.name"]
+#     filter = { type = "and", fields = [{type = "selector", dimension = "instrument.name", value = "hw.network"}]}
+#     aggregations = [{type = "longSum", name = "count", fieldName = "hw.network.bandwidth.utilization_all_count"}, {type = "doubleSum", name = "hw.network.bandwidth.utilization_all-Sum", fieldName = "hw.network.bandwidth.utilization_all"}]
+#     post_aggregations = [{type = "arithmetic", name = "intersightdevnetpod13.ucs.network.utilization.average", fn = "/", fields = [{type = "fieldAccess", name = "hw.network.bandwidth.utilization_all-Sum",fieldName = "hw.network.bandwidth.utilization_all-Sum"},{type = "fieldAccess", name = "count", fieldName = "count"}]}]
+#     field_names = ["intersightdevnetpod13.ucs.network.utilization.average"]
+#     otel_dimension_to_attribute_map = { "host.name" = "intersightdevnetpod13.host.name" }
+#     otel_attributes = { "intersightdevnetpod13.account.name" = "my_intersight_account", "intersightdevnetpod13.fsotype" = "ucs_domain"}
+#     interval = 60
+
+#     [[tspollers]]
+#     name = "ucs_network_bytes"
+#     datasource = "NetworkInterfaces"
+#     dimensions = ["host.name"]
+#     filter = { type = "and", fields = [{type = "selector", dimension = "instrument.name", value = "hw.network"}]}
+#     aggregations = [{"type" = "doubleSum", "name" = "hw.network.io_transmit_duration-Sum", "fieldName" = "hw.network.io_transmit_duration"}, {"type" = "longSum", "name" = "hw.network.io_transmit-Sum", "fieldName" = "hw.network.io_transmit" }, {"type" = "doubleSum", "name" = "hw.network.io_receive_duration-Sum", "fieldName" = "hw.network.io_receive_duration"}, {"type" = "longSum", "name" = "hw.network.io_receive-Sum", "fieldName" = "hw.network.io_receive" }]
+
+#     post_aggregations = [{type = "arithmetic", name = "intersightdevnetpod13.ucs.network.transmit.rate", fn = "/", fields = [{type = "fieldAccess", name = "hw.network.io_transmit-Sum",fieldName = "hw.network.io_transmit-Sum"},{type = "fieldAccess", name = "hw.network.io_transmit_duration-Sum", fieldName = "hw.network.io_transmit_duration-Sum"}]}, {type = "arithmetic", name = "intersightdevnetpod13.ucs.network.receive.rate", fn = "/", fields = [{type = "fieldAccess", name = "hw.network.io_receive-Sum",fieldName = "hw.network.io_receive-Sum"},{type = "fieldAccess", name = "hw.network.io_transmit_receive-Sum", fieldName = "hw.network.io_receive_duration-Sum"}]}]
+#     field_names = ["intersightdevnetpod13.ucs.network.transmit.rate", "intersightdevnetpod13.ucs.network.receive.rate"]
+#     otel_dimension_to_attribute_map = { "host.name" = "intersightdevnetpod13.host.name" }
+#     otel_attributes = { "intersightdevnetpod13.account.name" = "my_intersight_account", "intersightdevnetpod13.fsotype" = "ucs_domain"}
+#     interval = 60
+# ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: otel-collector
+  labels:
+    app: opentelemetry
+    component: otel-collector
+spec:
+  ports:
+    - name: otlp-grpc # Default endpoint for OpenTelemetry gRPC receiver.
+      port: 4317
+      protocol: TCP
+      targetPort: 4317
+    - name: otlp-http # Default endpoint for OpenTelemetry HTTP receiver.
+      port: 4318
+      protocol: TCP
+      targetPort: 4318
+    - name: metrics # Default endpoint for querying metrics.
+      port: 8888
+    - name: prometheus-exporter
+      port: 2112
+  selector:
+    component: otel-collector

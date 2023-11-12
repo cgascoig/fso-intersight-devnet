@@ -1,0 +1,45 @@
+processors:
+  batch:
+
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+
+exporters:
+  logging:
+    loglevel: debug
+
+  otlphttp:
+    logs_endpoint: https://fso-devnet.saas.appd-test.com/data/v1/logs
+    metrics_endpoint: https://fso-devnet.saas.appd-test.com/data/v1/metrics
+    traces_endpoint: https://fso-devnet.saas.appd-test.com/data/v1/trace
+    auth:
+      authenticator: oauth2client
+
+extensions:
+  oauth2client:
+    client_id: "<FSO_PLATFORM_CLIENT_ID>"
+    client_secret: "<FSO_PLATFORM_CLIENT_SECRET>"
+    token_url: "<FSO_PLATFORM_TOKEN_URL>"
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlphttp]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [logging, otlphttp]
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlphttp]
+
+  extensions: [oauth2client]
+  telemetry:
+    logs:
+      level: "debug"

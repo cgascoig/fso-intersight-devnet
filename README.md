@@ -81,6 +81,12 @@ $ kubectl -n intersight-otel create configmap otel-collector-config --from-file=
 configmap/otel-collector-config created
 ```
 
+Create a config map for the intersight-otel configuration file:
+```
+$ kubectl -n intersight-otel create configmap intersight-otel-config --from-file=intersight-otel.toml=fso_intersight_otel.toml
+configmap/intersight-otel-config created
+```
+
 Finally, apply the example manifest:
 ```
 $ kubectl -n intersight-otel apply -f k8s-all-in-one.yaml

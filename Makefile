@@ -15,7 +15,7 @@ GIT_COMMIT := $(shell git rev-parse HEAD)$(GIT_COMMIT_SUFFIX)
 BUILD_DATETIME := $(shell date '+%F-%T')
 
 GLOBAL_FILES := Makefile 
-SOLUTION_TEMPLATE_FILES := $(shell find solution-template -type f)
+POD_TEMPLATE_FILES := $(shell find pod-template -type f)
 
 NUM_PODS = 15
 POD_LIST = $(shell for i in $$(seq -w 1 $(NUM_PODS)); do echo "pod$${i}"; done)
@@ -24,12 +24,12 @@ all::
 .PHONY: all
 
 define make-pod-target =
-solutions/$1/manifest.json: $(GLOBAL_FILES) $(SOLUTION_TEMPLATE_FILES)
-	rm -Rf $$(@D)
-	mkdir -p $$(@D)
-	for f in $$$$(cd solution-template; find . -type f); do d=$$$$(dirname $$$${f}); mkdir -p "solutions/$1/$$$${d}"; sed -e 's/intersightdevnet/intersightdevnet$1/g' "solution-template/$$$${f}" > "solutions/$1/$$$${f}"; done
+pods/$1/solution/manifest.json: $(GLOBAL_FILES) $(POD_TEMPLATE_FILES)
+	rm -Rf "pods/$1"
+	mkdir -p "pods/$1"
+	for f in $$$$(cd pod-template; find . -type f); do d=$$$$(dirname $$$${f}); mkdir -p "pods/$1/$$$${d}"; sed -e 's/intersightdevnet/intersightdevnet$1/g' "pod-template/$$$${f}" > "pods/$1/$$$${f}"; done
 
-all:: solutions/$1/manifest.json
+all:: pods/$1/solution/manifest.json
 endef
 
 $(foreach element,$(POD_LIST),$(eval $(call make-pod-target,$(element))))
