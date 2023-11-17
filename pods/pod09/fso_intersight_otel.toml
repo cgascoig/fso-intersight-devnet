@@ -3,7 +3,7 @@ otel_collector_endpoint = "http://127.0.0.1:4317"
 [[pollers]]
 name = "intersightdevnet.vm_count"
 otel_attributes = { "intersightdevnet.account.name" = "pod09", "intersightdevnet.fsotype" = "account" }
-api_query = "api/v1/virtualization/VirtualMachines?=true"
+api_query = "api/v1/virtualization/VirtualMachines?$count=true"
 aggregator = "result_count"
 interval = 60
 

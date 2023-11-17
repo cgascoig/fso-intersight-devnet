@@ -28,8 +28,8 @@ define make-pod-target =
 pods/$1/fso_intersight_otel.toml: $(GLOBAL_FILES) $(POD_TEMPLATE_FILES)
 	rm -Rf "pods/$1"
 	mkdir -p "pods/$1"
-	# for f in $$$$(cd pod-template; find . -type f); do d=$$$$(dirname $$$${f}); mkdir -p "pods/$1/$$$${d}"; sed -e 's/intersightdevnet/intersightdevnet$1/g' "pod-template/$$$${f}" > "pods/$1/$$$${f}"; done
-	for f in $$$$(cd pod-template; find . -type f); do d=$$$$(dirname $$$${f}); mkdir -p "pods/$1/$$$${d}"; export POD_NAME="$1";  cat "pod-template/$$$${f}"|envsubst > "pods/$1/$$$${f}"; done
+	for f in $$$$(cd pod-template; find . -type f); do d=$$$$(dirname $$$${f}); mkdir -p "pods/$1/$$$${d}"; sed -e 's/POD_NAME/$1/g' "pod-template/$$$${f}" > "pods/$1/$$$${f}"; done
+	# for f in $$$$(cd pod-template; find . -type f); do d=$$$$(dirname $$$${f}); mkdir -p "pods/$1/$$$${d}"; export POD_NAME="$1";  cat "pod-template/$$$${f}"|envsubst "$${POD_NAME}" > "pods/$1/$$$${f}"; done
 
 all:: pods/$1/fso_intersight_otel.toml
 endef
