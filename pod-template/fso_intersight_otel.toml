@@ -2,7 +2,7 @@ otel_collector_endpoint = "http://127.0.0.1:4317"
 
 [[pollers]]
 name = "intersightdevnet.vm_count"
-otel_attributes = { "intersightdevnet.account.name" = "my_intersight_account", "intersightdevnet.fsotype" = "account" }
+otel_attributes = { "intersightdevnet.account.name" = "${POD_NAME}", "intersightdevnet.fsotype" = "account" }
 api_query = "api/v1/virtualization/VirtualMachines?$count=true"
 aggregator = "result_count"
 interval = 60
@@ -16,7 +16,7 @@ aggregations = [{name = "read_ops_per_min", type = "longSum", fieldName = "sumRe
 post_aggregations = [{type = "arithmetic",name = "intersightdevnet.hyperflex.read.iops",fn = "/",fields = [{type = "fieldAccess",name = "read_ops_per_min",fieldName = "read_ops_per_min"},{type = "constant",name = "const",value = 300}]}, {type = "arithmetic",name = "intersightdevnet.hyperflex.write.iops",fn = "/",fields = [{type = "fieldAccess",name = "write_ops_per_min",fieldName = "write_ops_per_min"},{type = "constant",name = "const",value = 300}]},{type = "arithmetic", name = "intersightdevnet.hyperflex.read.throughput", fn = "/", fields = [{type = "fieldAccess", name = "read_tp_bytes_per_min", fieldName = "read_tp_bytes_per_min"},{type = "constant", name = "const", value = 300}]},{type = "arithmetic", name = "intersightdevnet.hyperflex.write.throughput", fn = "/", fields = [{type = "fieldAccess", name = "write_tp_bytes_per_min", fieldName = "write_tp_bytes_per_min"},{type = "constant", name = "const", value = 300}]},{type = "arithmetic", name = "intersightdevnet.hyperflex.read.latency", fn = "/", fields = [{type = "fieldAccess", name = "sum_read_latency", fieldName = "sum_read_latency"},{type = "fieldAccess",name = "read_ops_per_min", fieldName = "read_ops_per_min"}]},{type = "arithmetic", name = "intersightdevnet.hyperflex.write.latency", fn = "/", fields = [{type = "fieldAccess", name = "sum_write_latency",fieldName = "sum_write_latency"},{type = "fieldAccess", name = "write_ops_per_min", fieldName = "write_ops_per_min"}]}]
 field_names = ["intersightdevnet.hyperflex.read.iops", "intersightdevnet.hyperflex.write.iops", "intersightdevnet.hyperflex.read.throughput", "intersightdevnet.hyperflex.write.throughput", "intersightdevnet.hyperflex.read.latency", "intersightdevnet.hyperflex.write.latency"]
 otel_dimension_to_attribute_map = { deviceId = "intersightdevnet.hyperflex.device.id" }
-otel_attributes = { "intersightdevnet.account.name" = "my_intersight_account", "intersightdevnet.fsotype" = "hyperflex_cluster"}
+otel_attributes = { "intersightdevnet.account.name" = "${POD_NAME}", "intersightdevnet.fsotype" = "hyperflex_cluster"}
 interval = 60
 
 [[tspollers]]
@@ -28,7 +28,7 @@ aggregations = [{type = "longSum", name = "count", fieldName = "hw.network.bandw
 post_aggregations = [{type = "arithmetic", name = "intersightdevnet.ucs.network.utilization.average", fn = "/", fields = [{type = "fieldAccess", name = "hw.network.bandwidth.utilization_all-Sum",fieldName = "hw.network.bandwidth.utilization_all-Sum"},{type = "fieldAccess", name = "count", fieldName = "count"}]}]
 field_names = ["intersightdevnet.ucs.network.utilization.average"]
 otel_dimension_to_attribute_map = { "host.name" = "intersightdevnet.host.name" }
-otel_attributes = { "intersightdevnet.account.name" = "my_intersight_account", "intersightdevnet.fsotype" = "ucs_domain"}
+otel_attributes = { "intersightdevnet.account.name" = "${POD_NAME}", "intersightdevnet.fsotype" = "ucs_domain"}
 interval = 60
 
 [[tspollers]]
@@ -41,5 +41,5 @@ aggregations = [{"type" = "doubleSum", "name" = "hw.network.io_transmit_duration
 post_aggregations = [{type = "arithmetic", name = "intersightdevnet.ucs.network.transmit.rate", fn = "/", fields = [{type = "fieldAccess", name = "hw.network.io_transmit-Sum",fieldName = "hw.network.io_transmit-Sum"},{type = "fieldAccess", name = "hw.network.io_transmit_duration-Sum", fieldName = "hw.network.io_transmit_duration-Sum"}]}, {type = "arithmetic", name = "intersightdevnet.ucs.network.receive.rate", fn = "/", fields = [{type = "fieldAccess", name = "hw.network.io_receive-Sum",fieldName = "hw.network.io_receive-Sum"},{type = "fieldAccess", name = "hw.network.io_transmit_receive-Sum", fieldName = "hw.network.io_receive_duration-Sum"}]}]
 field_names = ["intersightdevnet.ucs.network.transmit.rate", "intersightdevnet.ucs.network.receive.rate"]
 otel_dimension_to_attribute_map = { "host.name" = "intersightdevnet.host.name" }
-otel_attributes = { "intersightdevnet.account.name" = "my_intersight_account", "intersightdevnet.fsotype" = "ucs_domain"}
+otel_attributes = { "intersightdevnet.account.name" = "${POD_NAME}", "intersightdevnet.fsotype" = "ucs_domain"}
 interval = 60

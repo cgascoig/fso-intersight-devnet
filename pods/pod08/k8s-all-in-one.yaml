@@ -98,58 +98,6 @@ spec:
                 path: otel-collector-config.yaml
           name: otel-collector-config-vol
 ---
-# apiVersion: v1
-# kind: ConfigMap
-# metadata:
-#   name: intersight-otel-config
-# data:
-#   intersight-otel.toml: |
-#     otel_collector_endpoint = "http://127.0.0.1:4317"
-
-#     [[pollers]]
-#     name = "intersightdevnetpod08.vm_count"
-#     otel_attributes = { "intersightdevnetpod08.account.name" = "my_intersight_account", "intersightdevnetpod08.fsotype" = "account" }
-#     api_query = "api/v1/virtualization/VirtualMachines?$count=true"
-#     aggregator = "result_count"
-#     interval = 60
-
-#     [[tspollers]]
-#     name = "hx_performance"
-#     datasource = "hx"
-#     dimensions = ["deviceId"]
-#     filter = { type = "and", fields = [{type = "selector", dimension = "node", value = "allhosts"},{type = "selector", dimension = "datastore", value = "cluster"}]}
-#     aggregations = [{name = "read_ops_per_min", type = "longSum", fieldName = "sumReadOps"}, {name = "write_ops_per_min", type = "longSum",fieldName = "sumWriteOps"}, {name = "read_tp_bytes_per_min", type = "longSum", fieldName = "sumReadBytes"},{name = "write_tp_bytes_per_min", type = "longSum", fieldName = "sumWriteBytes"},{name = "sum_read_latency",type = "longSum", fieldName = "sumReadLatency"},{name = "sum_write_latency",type = "longSum", fieldName = "sumWriteLatency"}]
-#     post_aggregations = [{type = "arithmetic",name = "intersightdevnetpod08.hyperflex.read.iops",fn = "/",fields = [{type = "fieldAccess",name = "read_ops_per_min",fieldName = "read_ops_per_min"},{type = "constant",name = "const",value = 300}]}, {type = "arithmetic",name = "intersightdevnetpod08.hyperflex.write.iops",fn = "/",fields = [{type = "fieldAccess",name = "write_ops_per_min",fieldName = "write_ops_per_min"},{type = "constant",name = "const",value = 300}]},{type = "arithmetic", name = "intersightdevnetpod08.hyperflex.read.throughput", fn = "/", fields = [{type = "fieldAccess", name = "read_tp_bytes_per_min", fieldName = "read_tp_bytes_per_min"},{type = "constant", name = "const", value = 300}]},{type = "arithmetic", name = "intersightdevnetpod08.hyperflex.write.throughput", fn = "/", fields = [{type = "fieldAccess", name = "write_tp_bytes_per_min", fieldName = "write_tp_bytes_per_min"},{type = "constant", name = "const", value = 300}]},{type = "arithmetic", name = "intersightdevnetpod08.hyperflex.read.latency", fn = "/", fields = [{type = "fieldAccess", name = "sum_read_latency", fieldName = "sum_read_latency"},{type = "fieldAccess",name = "read_ops_per_min", fieldName = "read_ops_per_min"}]},{type = "arithmetic", name = "intersightdevnetpod08.hyperflex.write.latency", fn = "/", fields = [{type = "fieldAccess", name = "sum_write_latency",fieldName = "sum_write_latency"},{type = "fieldAccess", name = "write_ops_per_min", fieldName = "write_ops_per_min"}]}]
-#     field_names = ["intersightdevnetpod08.hyperflex.read.iops", "intersightdevnetpod08.hyperflex.write.iops", "intersightdevnetpod08.hyperflex.read.throughput", "intersightdevnetpod08.hyperflex.write.throughput", "intersightdevnetpod08.hyperflex.read.latency", "intersightdevnetpod08.hyperflex.write.latency"]
-#     otel_dimension_to_attribute_map = { deviceId = "intersightdevnetpod08.hyperflex.device.id" }
-#     otel_attributes = { "intersightdevnetpod08.account.name" = "my_intersight_account", "intersightdevnetpod08.fsotype" = "hyperflex_cluster"}
-#     interval = 60
-
-#     [[tspollers]]
-#     name = "ucs_network_utilization"
-#     datasource = "NetworkInterfaces"
-#     dimensions = ["host.name"]
-#     filter = { type = "and", fields = [{type = "selector", dimension = "instrument.name", value = "hw.network"}]}
-#     aggregations = [{type = "longSum", name = "count", fieldName = "hw.network.bandwidth.utilization_all_count"}, {type = "doubleSum", name = "hw.network.bandwidth.utilization_all-Sum", fieldName = "hw.network.bandwidth.utilization_all"}]
-#     post_aggregations = [{type = "arithmetic", name = "intersightdevnetpod08.ucs.network.utilization.average", fn = "/", fields = [{type = "fieldAccess", name = "hw.network.bandwidth.utilization_all-Sum",fieldName = "hw.network.bandwidth.utilization_all-Sum"},{type = "fieldAccess", name = "count", fieldName = "count"}]}]
-#     field_names = ["intersightdevnetpod08.ucs.network.utilization.average"]
-#     otel_dimension_to_attribute_map = { "host.name" = "intersightdevnetpod08.host.name" }
-#     otel_attributes = { "intersightdevnetpod08.account.name" = "my_intersight_account", "intersightdevnetpod08.fsotype" = "ucs_domain"}
-#     interval = 60
-
-#     [[tspollers]]
-#     name = "ucs_network_bytes"
-#     datasource = "NetworkInterfaces"
-#     dimensions = ["host.name"]
-#     filter = { type = "and", fields = [{type = "selector", dimension = "instrument.name", value = "hw.network"}]}
-#     aggregations = [{"type" = "doubleSum", "name" = "hw.network.io_transmit_duration-Sum", "fieldName" = "hw.network.io_transmit_duration"}, {"type" = "longSum", "name" = "hw.network.io_transmit-Sum", "fieldName" = "hw.network.io_transmit" }, {"type" = "doubleSum", "name" = "hw.network.io_receive_duration-Sum", "fieldName" = "hw.network.io_receive_duration"}, {"type" = "longSum", "name" = "hw.network.io_receive-Sum", "fieldName" = "hw.network.io_receive" }]
-
-#     post_aggregations = [{type = "arithmetic", name = "intersightdevnetpod08.ucs.network.transmit.rate", fn = "/", fields = [{type = "fieldAccess", name = "hw.network.io_transmit-Sum",fieldName = "hw.network.io_transmit-Sum"},{type = "fieldAccess", name = "hw.network.io_transmit_duration-Sum", fieldName = "hw.network.io_transmit_duration-Sum"}]}, {type = "arithmetic", name = "intersightdevnetpod08.ucs.network.receive.rate", fn = "/", fields = [{type = "fieldAccess", name = "hw.network.io_receive-Sum",fieldName = "hw.network.io_receive-Sum"},{type = "fieldAccess", name = "hw.network.io_transmit_receive-Sum", fieldName = "hw.network.io_receive_duration-Sum"}]}]
-#     field_names = ["intersightdevnetpod08.ucs.network.transmit.rate", "intersightdevnetpod08.ucs.network.receive.rate"]
-#     otel_dimension_to_attribute_map = { "host.name" = "intersightdevnetpod08.host.name" }
-#     otel_attributes = { "intersightdevnetpod08.account.name" = "my_intersight_account", "intersightdevnetpod08.fsotype" = "ucs_domain"}
-#     interval = 60
-# ---
 apiVersion: v1
 kind: Service
 metadata:
